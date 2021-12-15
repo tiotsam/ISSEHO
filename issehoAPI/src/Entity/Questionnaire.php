@@ -22,19 +22,19 @@ class Questionnaire
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $question;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $reponse;
-
-    /**
      * @ORM\OneToMany(targetEntity=user::class, mappedBy="questionnaire")
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $questions = [];
+
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $reponses = [];
 
     public function __construct()
     {
@@ -44,30 +44,6 @@ class Questionnaire
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getQuestion(): ?string
-    {
-        return $this->question;
-    }
-
-    public function setQuestion(string $question): self
-    {
-        $this->question = $question;
-
-        return $this;
-    }
-
-    public function getReponse(): ?string
-    {
-        return $this->reponse;
-    }
-
-    public function setReponse(?string $reponse): self
-    {
-        $this->reponse = $reponse;
-
-        return $this;
     }
 
     /**
@@ -96,6 +72,30 @@ class Questionnaire
                 $user->setQuestionnaire(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getQuestions(): ?array
+    {
+        return $this->questions;
+    }
+
+    public function setQuestions(array $questions): self
+    {
+        $this->questions = $questions;
+
+        return $this;
+    }
+
+    public function getReponses(): ?array
+    {
+        return $this->reponses;
+    }
+
+    public function setReponses(array $reponses): self
+    {
+        $this->reponses = $reponses;
 
         return $this;
     }
