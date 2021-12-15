@@ -63,7 +63,7 @@ class Infos
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=user::class, mappedBy="enfants")
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="enfants")
      */
     private $enfants;
 
@@ -174,14 +174,14 @@ class Infos
     }
 
     /**
-     * @return Collection|user[]
+     * @return Collection|User[]
      */
     public function getEnfants(): Collection
     {
         return $this->enfants;
     }
 
-    public function addEnfant(user $enfant): self
+    public function addEnfant(User $enfant): self
     {
         if (!$this->enfants->contains($enfant)) {
             $this->enfants[] = $enfant;
@@ -191,7 +191,7 @@ class Infos
         return $this;
     }
 
-    public function removeEnfant(user $enfant): self
+    public function removeEnfant(User $enfant): self
     {
         if ($this->enfants->removeElement($enfant)) {
             // set the owning side to null (unless already changed)
@@ -202,4 +202,6 @@ class Infos
 
         return $this;
     }
+
+
 }

@@ -74,6 +74,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $enfants;
 
+
+  
+
     public function __construct()
     {
         $this->statistiquesConnexions = new ArrayCollection();
@@ -328,4 +331,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
 }
