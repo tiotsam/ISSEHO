@@ -69,6 +69,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $mailAutos;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Infos::class, inversedBy="enfants")
+     */
+    private $enfants;
+
     public function __construct()
     {
         $this->statistiquesConnexions = new ArrayCollection();
@@ -308,6 +313,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $mailAuto->setAuteur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEnfants(): ?Infos
+    {
+        return $this->enfants;
+    }
+
+    public function setEnfants(?Infos $enfants): self
+    {
+        $this->enfants = $enfants;
 
         return $this;
     }

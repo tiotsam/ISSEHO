@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\InfosRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -59,6 +61,16 @@ class Infos
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity=user::class, mappedBy="enfants")
+     */
+    private $enfants;
+
+    public function __construct()
+    {
+        $this->enfants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -157,6 +169,36 @@ class Infos
     public function setUser(user $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|user[]
+     */
+    public function getEnfants(): Collection
+    {
+        return $this->enfants;
+    }
+
+    public function addEnfant(user $enfant): self
+    {
+        if (!$this->enfants->contains($enfant)) {
+            $this->enfants[] = $enfant;
+            $enfant->setEnfants($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEnfant(user $enfant): self
+    {
+        if ($this->enfants->removeElement($enfant)) {
+            // set the owning side to null (unless already changed)
+            if ($enfant->getEnfants() === $this) {
+                $enfant->setEnfants(null);
+            }
+        }
 
         return $this;
     }
