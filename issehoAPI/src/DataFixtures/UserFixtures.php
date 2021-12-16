@@ -28,6 +28,28 @@ class UserFixtures extends Fixture
         $manager->persist($admin);
 
         
+        for ($i=0; $i<10; $i++) {
+            $prof = new User;
+        $prof->setEmail('prof'.$i.'@gmail.com');
+        $prof->setRoles(['ROLE_USER','ROLE_PROF']);
+        $prof->setPassword($this->userPasswordHasher->hashPassword($prof,plainPassword:'prof123'.$i));
+        $manager->persist($prof);
+
+        $parent = new User;
+        $parent->setEmail('parent'.$i.'@gmail.com');
+        $parent->setRoles(['ROLE_USER','ROLE_PARENT']);
+        $parent->setPassword($this->userPasswordHasher->hashPassword($prof,plainPassword:'parent123'.$i));
+        $manager->persist($parent);
+
+        $enfant = new User;
+        $enfant->setEmail('enfant'.$i.'@gmail.com');
+        $enfant->setRoles(['ROLE_USER','ROLE_ENFANT']);
+        $enfant->setPassword($this->userPasswordHasher->hashPassword($prof,plainPassword:'enfant123'.$i));
+        $manager->persist($enfant);
+
+        }
+
+        
 
         $manager->flush();
     }
