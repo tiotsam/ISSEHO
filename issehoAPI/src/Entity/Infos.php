@@ -57,7 +57,7 @@ class Infos
     private $imageUser;
 
     /**
-     * @ORM\OneToOne(targetEntity=user::class, inversedBy="infos", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=user::class, mappedBy="infos")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

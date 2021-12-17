@@ -103,20 +103,20 @@ class MailAutoFixtures extends Fixture implements DependentFixtureInterface
             
         // }
 
-        // $mail->setObjet()
-        // ->setContenu()
-        // ->setDateEnvoi(new \DateTime('12/16/2021'))
-        // ->setAuteur($auteur)
-        // ->setCours($cour);
-        // for ($i=0; $i < random_int(1,5); $i++) { 
-        //     $destinataire = new User;
-        //     $destinataire = $this->userRepository->findOneBy(array('email'=>'parent'.random_int(0,9).'@gmail.com'));
-        //     $mail->addDestinataire($destinataire);
-        // }
-        // $manager->persist($mail);
+        // // $mail->setObjet()
+        // // ->setContenu()
+        // // ->setDateEnvoi(new \DateTime('12/16/2021'))
+        // // ->setAuteur($auteur)
+        // // ->setCours($cour);
+        // // for ($i=0; $i < random_int(1,5); $i++) { 
+        // //     $destinataire = new User;
+        // //     $destinataire = $this->userRepository->findOneBy(array('email'=>'parent'.random_int(0,9).'@gmail.com'));
+        // //     $mail->addDestinataire($destinataire);
+        // // }
+        // // $manager->persist($mail);
 
 
-        $manager->flush();
+        // $manager->flush();
     }
 
     public function getDependencies()

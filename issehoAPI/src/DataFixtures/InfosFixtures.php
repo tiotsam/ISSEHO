@@ -18,7 +18,7 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
     {
         
         $this->userRepository = $userRepository;
-        $this->infoRepositry = $infosRepository;
+        $this->infoRepository = $infosRepository;
     }
 
 
@@ -39,7 +39,7 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
 
         $user = new User;
         $info = new Infos;
-        $user = $this->userRepository->findOneBy(array("email"=>'prof'.$i.'gmail.com'));
+        $user = $this->userRepository->findOneBy(array("email"=>'prof1@gmail.com'));
         $birthdate = new \DateTime(random_int(1,12).'/'.random_int(1,28).'/'.random_int(1960,2000));
         $dateinscription = new \DateTime('12/'.random_int(1,28).'/2020');
         $info->setNom($nom[random_int(0,sizeof($nom)-1)])
@@ -47,7 +47,7 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
         ->setDepartement(random_int(1,95))
         ->setVille($ville[random_int(0,sizeof($ville)-1)])
         ->setBirthDate($birthdate)
-        ->setImageUser($imageuser[random_int(0,sizeof($imageuser))])
+        ->setImageUser($imageuser[random_int(0,sizeof($imageuser)-1)])
         ->setDateInscription($dateinscription)
         ->setUser($user);
 
@@ -62,7 +62,8 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
             $user = new User;
             $info = new Infos;
             $enfant = new User;
-            $user = $this->userRepository->findOneBy(array("email"=>'parent'.$i.'gmail.com'));
+            $enfant = $this->userRepository->findOneBy(array("email"=>'enfant1@gmail.com'));
+            $user = $this->userRepository->findOneBy(array("email"=>'parent1@gmail.com'));
             $birthdate = new \DateTime(random_int(1,12).'/'.random_int(1,28).'/'.random_int(1960,2000));
             $dateinscription = new \DateTime('12/'.random_int(1,28).'/2020');
             $info->setNom($nom[random_int(0,sizeof($nom)-1)])
@@ -70,9 +71,9 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
             ->setDepartement(random_int(1,95))
             ->setVille($ville[random_int(0,sizeof($ville)-1)])
             ->setBirthDate($birthdate)
-            ->setImageUser($imageuser[random_int(0,sizeof($imageuser))])
+            ->setImageUser($imageuser[random_int(0,sizeof($imageuser)-1)])
             ->setDateInscription($dateinscription)
-            ->addEnfant($enfant)  //a fixe syntaxe
+            ->addEnfant($enfant)
             ->setUser($user);
             
 
@@ -89,7 +90,7 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
 
                         $user = new User;
                         $info = new Infos;
-                        $user = $this->userRepository->findOneBy(array("email"=>'enfant'.$i.'gmail.com'));
+                        $user = $this->userRepository->findOneBy(array("email"=>'enfant2@gmail.com'));
                         $birthdate = new \DateTime(random_int(1,12).'/'.random_int(1,28).'/'.random_int(2005,2015));
                         $dateinscription = new \DateTime('12/'.random_int(1,28).'/2020');
                         $info->setNom($nom[random_int(0,sizeof($nom)-1)])
@@ -97,7 +98,7 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
                         ->setDepartement(random_int(1,95))
                         ->setVille($ville[random_int(0,sizeof($ville)-1)])
                         ->setBirthDate($birthdate)
-                        ->setImageUser($imageenfant[random_int(0,sizeof($imageuser))])
+                        ->setImageUser($imageenfant[random_int(0,sizeof($imageenfant)-1)])
                         ->setDateInscription($dateinscription)
                         ->setUser($user);
                 
