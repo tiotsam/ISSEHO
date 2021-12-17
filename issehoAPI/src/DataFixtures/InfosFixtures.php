@@ -8,9 +8,10 @@ use App\Entity\User;
 use App\Repository\InfosRepository;
 use App\Repository\UserRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class InfosFixtures extends Fixture
+class InfosFixtures extends Fixture implements DependentFixtureInterface
 {
 
     public function __construct(UserRepository $userRepository, InfosRepository $infosRepository)
