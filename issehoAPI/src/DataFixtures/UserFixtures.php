@@ -38,13 +38,13 @@ class UserFixtures extends Fixture
         $parent = new User;
         $parent->setEmail('parent'.$i.'@gmail.com');
         $parent->setRoles(['ROLE_USER','ROLE_PARENT']);
-        $parent->setPassword($this->userPasswordHasher->hashPassword($prof,plainPassword:'parent123'.$i));
+        $parent->setPassword($this->userPasswordHasher->hashPassword($parent,plainPassword:'parent123'.$i));
         $manager->persist($parent);
 
         $enfant = new User;
         $enfant->setEmail('enfant'.$i.'@gmail.com');
         $enfant->setRoles(['ROLE_USER','ROLE_ENFANT']);
-        $enfant->setPassword($this->userPasswordHasher->hashPassword($prof,plainPassword:'enfant123'.$i));
+        $enfant->setPassword($this->userPasswordHasher->hashPassword($enfant,plainPassword:'enfant123'.$i));
         $manager->persist($enfant);
 
         }
