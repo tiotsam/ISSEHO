@@ -25,14 +25,14 @@ class CoursFixtures extends Fixture implements DependentFixtureInterface
     
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
+        // // $product = new Product();
+        // // $manager->persist($product);
+
+        
         $matières = array('Mathématiques','Français','Echec','Anglais','Informatique','Physique','Chimie');
         $niveaux = array('CP','CE1','CE2','CM1','CM2','6ème','5ème','4ème','3ème','2nde','1ère','terminale','BEP','CAP','BAC PRO');
 
         // $user = $this->userRepository->findOneBy(array('email'=>'toto@gmail.com'));
-        
-        // $auteur = $this->userRepository->findOneBy(array('email'=>'prof'.random_int(0,9).'@gmail.com'));
         
         // for($i=0 ; $i < 30; $i++){
         //     $cour = new Cours;
