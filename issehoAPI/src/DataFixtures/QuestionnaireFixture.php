@@ -9,7 +9,7 @@ class QuestionnaireFixture extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
+        // $product = new Product(); ffffffff
         // $manager->persist($product);
 
         $manager->flush();
