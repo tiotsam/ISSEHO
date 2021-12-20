@@ -39,6 +39,7 @@ class StatsFixtures extends Fixture implements DependentFixtureInterface
                     $stats->setDateConnexion($dco)
                     ->setDateDeconnexion($ddeco)
                     ->setUser($user);
+                    $manager->persist($stats);
                 }
 
             }else{
@@ -46,12 +47,13 @@ class StatsFixtures extends Fixture implements DependentFixtureInterface
                 for ($j=0; $j < 100 ; $j++) { 
 
                     $dateCo = new \DateTime(random_int(1,12).'/'.random_int(1,28).'/2021');
-                    $dateDeco = $dateCo->add(new DateInterval('PT'.random_int(1,3).'H')) ;
+                    $dateDeco = $dateCo->add(new DateInterval('PT'.random_int(1,3).'H'));
 
                     $stats = new StatistiquesConnexions;
                     $stats->setDateConnexion($dateCo)
                     ->setDateDeconnexion($dateDeco)
                     ->setUser($user);
+                    $manager->persist($stats);
                 }
             }      
         }
