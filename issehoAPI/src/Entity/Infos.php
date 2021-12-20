@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\InfosRepository;
 use Doctrine\Common\Collections\ArrayCollection;
