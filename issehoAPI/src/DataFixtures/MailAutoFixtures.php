@@ -144,25 +144,29 @@ class MailAutoFixtures extends Fixture implements DependentFixtureInterface
 
         }
 
-        $rdv = new MailAuto;
-        $rdv->setObjet($objet[5])
-        ->setContenu("Bonjour Prénom et Nom du parent,
-        Je vous confirme notre rendez-vous du DDD à HHH.
-        Vous recevrez un mail contenant le lien de la visioconférence 24h
-        avant l’heure la séance avec les instructions de connexion.
-        Bien Cordialement.
-        Nom et prénom du bénévole")
-        ->setDateEnvoi(new \DateTime(random_int(1,12).'/'.random_int(1,28).'/2021'))
-        ->setAuteur($auteur)
-        ->setCours($cour);
-        for ($i=0; $i < random_int(1,5); $i++) { 
-            $destinataire = new User;
-            $destinataire = $this->userRepository->findOneBy(array('email'=>'parent'.random_int(0,9).'@gmail.com'));
-            $mail->addDestinataire($destinataire);
+        for ($k=0; $k < random_int(1,30); $k++) { 
+            $parentRDV = new User;
+            $parentRDV = $this->userRepository->findOneBy(array('email'=>'parent'.random_int(0,9).'@gmail.com'));
+
+            $profRDV = new User;
+            $profRDV = $this->userRepository->findOneBy(array('email'=>'prof'.random_int(0,9).'@gmail.com'));
+            $d = new \DateTime(random_int(1, 12) . '/' . random_int(1, 28) . '/2021');
+
+            $rdv = new MailAuto;
+            $rdv->setObjet($objet[5])
+                ->setContenu("Bonjour ".$parentRDV->getInfos()->getPrenom()." ".$parentRDV->getInfos()->getNom().",
+                Je vous confirme notre rendez-vous du ".$d->format('d-m-Y')." à 18h.
+                Vous recevrez un mail contenant le lien de la visioconférence 24h
+                avant l’heure la séance avec les instructions de connexion.
+                Bien Cordialement.
+                ".$profRDV->getInfos()->getPrenom()." ".$profRDV->getInfos()->getNom()." du bénévole")
+                ->setDateEnvoi($d->sub(new DateInterval('P1D')))
+                ->setAuteur($auteur)
+                ->setCours($cour)
+                ->addDestinataire($parentRDV);
+                $manager->persist($rdv);
         }
-        $manager->persist($rdv);
-
-
+        
         $manager->flush();
     }
 
