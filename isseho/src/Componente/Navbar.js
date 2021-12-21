@@ -8,7 +8,7 @@ import '../Style/Navbar.css'
 function Navbar() {
 
 
-    //Si tu as des fonction pour la navbar ajoute sa ici :p
+    //Si tu as des fonction pour la navbar ajoute c'est ici :p
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
   
@@ -24,7 +24,7 @@ function Navbar() {
     window.addEventListener('resize', showButton);
   
     return (
-      <>
+      <>re la vaccination obligatoire
         <nav className='navbar'>
           <div className='navbar-container'>
 
@@ -43,34 +43,27 @@ function Navbar() {
               </li>
 
               <li className='nav-item'>
-                <Link to='/services'className='nav-links'onClick={closeMobileMenu} >
+                <Link to='/cours'className='nav-links'onClick={closeMobileMenu} >
                   Cours
                 </Link>
               </li>
 
               <li className='nav-item'>
-                <Link to='/services'className='nav-links'onClick={closeMobileMenu} >
+                <Link to='/a-propos'className='nav-links'onClick={closeMobileMenu} >
                   À propos
                 </Link>
               </li>
 
               <li className='nav-item'>
                 <Link
-                  to='/products'className='nav-links'onClick={closeMobileMenu}>
+                  to='/inscription'className='nav-links'onClick={closeMobileMenu}>
                 Inscription
                   </Link>
               </li>
   
-              <li>
 
-                <Link
-                  to='/connexion'className='nav-links-mobile'onClick={closeMobileMenu}>
-                  Connexion
-                </Link>
-
-              </li>
             </ul>
-                {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+                {button && <Button buttonStyle='btn--outline'> Connexion </Button>}
           </div>
         </nav>
       </>
