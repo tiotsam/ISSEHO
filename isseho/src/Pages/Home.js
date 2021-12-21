@@ -1,11 +1,18 @@
-import React from 'react'
+import React from 'react';
+import Footer from '../Componente/Footer';
+import HeaderSection from '../Componente/HeaderSection';
+import '../Style/App.css';
+
+
 
 function Home() {
     return (
-        <div>
-            
-        </div>
-    )
-}
 
-export default Home
+        <>
+          <HeaderSection/>
+          <Footer/>
+        </>
+    );
+};
+
+export default Home;

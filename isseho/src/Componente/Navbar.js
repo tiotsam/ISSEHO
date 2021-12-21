@@ -24,7 +24,7 @@ function Navbar() {
     window.addEventListener('resize', showButton);
   
     return (
-      <>re la vaccination obligatoire
+      <>
         <nav className='navbar'>
           <div className='navbar-container'>
 

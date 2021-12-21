@@ -1,13 +1,14 @@
 .navbar {
-    background: rgba(0, 0, 0, 0.082);
+    background: rgba(0, 0, 0, 0.02);
     height: 60px;
-    display: flex;
+    width: 100%;
+    display: absolute;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
-    position: sticky;
+    font-size: 1.3rem;
+    position: absolute;
     top: 0;
-    z-index: 999;
+    z-index: 1;
   }
   
   .navbar-container {
@@ -59,7 +60,7 @@
   }
   
   .nav-links:hover {
-    border-bottom: 4px solid #fff;
+    color: blue;
     transition: all 0.2s ease-out;
   }
   
@@ -93,7 +94,7 @@
     }
   
     .nav-menu.active {
-      background: ;
+      background: rgba(0, 0, 0, 0.404);
       left: 0;
       opacity: 1;
       transition: all 0.5s ease;
@@ -102,7 +103,7 @@
   
     .nav-links {
       text-align: center;
-      padding: 2rem;
+      padding: 0.1rem;
       width: 100%;
       display: table;
     }
