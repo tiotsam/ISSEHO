@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\User;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=MailAutoRepository::class)
@@ -25,16 +26,19 @@ class MailAuto
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups(['read_user'])]
     private $objet;
 
     /**
      * @ORM\Column(type="text")
      */
+    #[Groups(['read_user'])]
     private $contenu;
 
     /**
      * @ORM\Column(type="datetime")
      */
+    #[Groups(['read_user'])]
     private $dateEnvoi;
 
     /**
@@ -46,11 +50,13 @@ class MailAuto
     /**
      * @ORM\ManyToMany(targetEntity=user::class)
      */
+    
     private $destinataires;
 
     /**
      * @ORM\ManyToOne(targetEntity=cours::class, inversedBy="mailAutos")
      */
+    #[Groups(['read_user'])]
     private $cours;
 
     public function __construct()

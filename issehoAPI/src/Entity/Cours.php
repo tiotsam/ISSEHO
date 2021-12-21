@@ -8,11 +8,20 @@ use App\Repository\CoursRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CoursRepository::class)
  */
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read_cours']],
+    itemOperations: [
+       'PUT','DELETE','PATCH',
+       'get'=> [
+           'normalization_context' => ['groups' => ['read_cour']],
+       ],
+   ],
+   )]
 class Cours
 {
     /**
@@ -20,39 +29,46 @@ class Cours
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+    #[Groups(['read_cours'])]
     private $id;
 
     /**
      * @ORM\Column(type="datetime")
      */
+    #[Groups(['read_cours','read_cour'])]
     private $dateDebut;
 
     /**
      * @ORM\Column(type="datetime")
      */
+    #[Groups(['read_cours','read_cour'])]
     private $dateFin;
 
     /**
      * @ORM\ManyToOne(targetEntity=user::class, inversedBy="cours")
      * @ORM\JoinColumn(nullable=false)
      */
+    #[Groups(['read_cours','read_cour'])]
     private $Auteur;
 
     /**
      * @ORM\ManyToMany(targetEntity=user::class)
      */
+    #[Groups(['read_cours','read_cour'])]
     private $participants;
 
     /**
      * @ORM\ManyToOne(targetEntity=Niveau::class, inversedBy="cours")
      * @ORM\JoinColumn(nullable=false)
      */
+    #[Groups(['read_cours','read_cour'])]
     private $niveau;
 
     /**
      * @ORM\ManyToOne(targetEntity=Matieres::class, inversedBy="cours")
      * @ORM\JoinColumn(nullable=false)
      */
+    #[Groups(['read_cours','read_cour'])]
     private $matieres;
 
     /**

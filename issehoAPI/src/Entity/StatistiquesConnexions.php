@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\StatistiquesConnexionsRepository;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\User;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=StatistiquesConnexionsRepository::class)
@@ -23,11 +24,13 @@ class StatistiquesConnexions
     /**
      * @ORM\Column(type="datetime")
      */
+    #[Groups(['read_user'])]
     private $dateConnexion;
 
     /**
      * @ORM\Column(type="datetime")
      */
+    #[Groups(['read_user'])]
     private $dateDeconnexion;
 
     /**
