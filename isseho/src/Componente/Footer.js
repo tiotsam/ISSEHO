@@ -7,11 +7,9 @@ function Footer() {
     return (
       <div className='footer-container'>
         <section className='footer-subscription'>
-          <p className='footer-subscription-heading'>
-            Inscrivez-vous et pousser votre apprentisage.
-          </p>
+    
           <p className='footer-subscription-text'>
-            Le savoir n'auras plus de limite pour vous.
+            Nous contacter
           </p>
           <div className='input-areas'>
             <form>
@@ -21,27 +19,23 @@ function Footer() {
                 type='email'
                 placeholder='Votre Email'
               />
-              <Button buttonStyle='btn--outline'>Envoyer</Button>
+              {/* <Button buttonStyle='btn--outline'>Envoyer</Button> */}
             </form>
           </div>
         </section>
         <div class='footer-links'>
           <div className='footer-link-wrapper'>
             <div class='footer-link-items'>
-              <h2>INFO</h2>
-              <Link to='/sign-up'>XXXXXXXX</Link>
-              <Link to='/'>XXXXXXXX</Link>
-              <Link to='/'>XXXXX</Link>
-              <Link to='/'>XXXXX</Link>
-              <Link to='/'>XXXXXXXX</Link>
+              <h4>Qui somme nous ?</h4>
+              <Link to='/'>Notre Société</Link>
+              <Link to='/'>Nos Projets</Link>
+              <Link to='/'>Notre Vision</Link>
+          
             </div>
             <div class='footer-link-items'>
-              <h2>INFO 2</h2>
-              <Link to='/sign-up'>XXXXXXXX</Link>
-              <Link to='/'>XXXXXXXX</Link>
-              <Link to='/'>XXXXX</Link>
-              <Link to='/'>XXXXX</Link>
-              <Link to='/'>XXXXXXXX</Link>
+              <h4>Contact</h4>
+              <Link to='/'>Email: Contact@isseho.com</Link>
+              <Link to='/'>Téléphone: 01 58 95 65 20</Link>
             </div>
             </div>
         </div>

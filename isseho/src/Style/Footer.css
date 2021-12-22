@@ -66,11 +66,11 @@
     box-sizing: border-box;
   }
   
-  .footer-link-items h2 {
+  .footer-link-items h4 {
     margin-bottom: 16px;
   }
   
-  .footer-link-items > h2 {
+  .footer-link-items > h4 {
     color: #fff;
   }
   
