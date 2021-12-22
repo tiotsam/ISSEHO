@@ -20,15 +20,15 @@ function HeaderSection() {
             buttonStyle='btn--outline'
             buttonSize='btn--large'
           >
-            Voir les cours
+            Inscription
           </Button>
           <Button
-            className='btns'
+            
             buttonStyle='btn--primary'
             buttonSize='btn--large'
-            onClick={console.log('inscription')}
+            onClick="location.href = 'http://localhost:3000/cours'"
           >
-            Inscription <i className='far fa-play-circle' />
+            Voir les cours 
           </Button>
         </div>
       </div>
