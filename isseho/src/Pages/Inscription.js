@@ -1,10 +1,11 @@
 import React from 'react'
+import HeaderInscription from '../Componente/HeaderInscription'
 import HeaderSection from '../Componente/HeaderSection'
 
 function Inscription() {
     return (
         <div>
-            Inscriptionnnnnnnnnnnnnn
+            <HeaderInscription />
         </div>
     )
 }
