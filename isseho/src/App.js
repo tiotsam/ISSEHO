@@ -8,6 +8,8 @@ import Home from './Pages/Home';
 import Cours from './Pages/Cours';
 import Inscription from './Pages/Inscription';
 import Apropos from './Pages/Apropos';
+import Footer from './Componente/Footer';
+import Login from './Pages/Login';
 
 
 function App() {
@@ -20,7 +22,9 @@ function App() {
         <Route exact path='/cours' element={<Cours />}></Route>
         <Route exact path='/a-propos' element={<Apropos />}></Route>
         <Route exact path='/inscription' element={<Inscription />}></Route>
+        <Route exact path='/login' element={<Login />}></Route>
         </Routes>
+      <Footer />
     </BrowserRouter>
     </>
   );

@@ -4,7 +4,7 @@ import HeaderSection from '../Componente/HeaderSection'
 function Inscription() {
     return (
         <div>
-            <HeaderSection/>
+            Inscriptionnnnnnnnnnnnnn
         </div>
     )
 }

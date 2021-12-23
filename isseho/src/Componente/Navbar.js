@@ -60,10 +60,16 @@ function Navbar() {
                 Inscription
                   </Link>
               </li>
-  
+
+              <li className='nav-item'>
+                <Link
+                  to='/login'className='nav-links'onClick={closeMobileMenu}>
+                Connexion
+                  </Link>
+              </li>
 
             </ul>
-                {button && <Button buttonStyle='btn--outline'> Connexion </Button>}
+                
           </div>
         </nav>
       </>
