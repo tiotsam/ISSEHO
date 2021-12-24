@@ -7,6 +7,8 @@ use App\Repository\QuestionnaireRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\User;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=QuestionnaireRepository::class)
@@ -29,11 +31,13 @@ class Questionnaire
     /**
      * @ORM\Column(type="array")
      */
+    #[Groups(['read_user'])]
     private $questions = [];
 
     /**
      * @ORM\Column(type="array")
      */
+    #[Groups(['read_user'])]
     private $reponses = [];
 
     public function __construct()

@@ -9,11 +9,20 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
-#[ApiResource()]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read_users']],
+    itemOperations: [
+       'PUT','DELETE','PATCH',
+       'get'=> [
+           'normalization_context' => ['groups' => ['read_user']],
+       ],
+   ],
+   )]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
@@ -21,16 +30,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+    #[Groups(['read_users','read_user'])]
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
+    #[Groups(['read_users','read_user','read_cours','read_cour'])]
     private $email;
 
     /**
      * @ORM\Column(type="json")
      */
+    #[Groups(['read_users','read_user'])]
     private $roles = [];
 
     /**
@@ -42,36 +54,43 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\OneToOne(targetEntity=Infos::class, inversedBy="user", cascade={"persist", "remove"})
      */
+    #[Groups(['read_user','read_cours','read_cour'])]
     private $infos;
 
     /**
      * @ORM\ManyToOne(targetEntity=Questionnaire::class, inversedBy="user")
      */
+    #[Groups(['read_user'])]
     private $questionnaire;
 
     /**
      * @ORM\OneToMany(targetEntity=StatistiquesConnexions::class, mappedBy="user")
      */
+    #[Groups(['read_user'])]
     private $statistiquesConnexions;
 
     /**
      * @ORM\ManyToMany(targetEntity=Message::class, mappedBy="destinataire")
      */
+    #[Groups(['read_user'])]
     private $messages;
 
     /**
      * @ORM\OneToMany(targetEntity=Cours::class, mappedBy="Auteur", orphanRemoval=true)
      */
+    #[Groups(['read_user'])]
     private $cours;
 
     /**
      * @ORM\OneToMany(targetEntity=MailAuto::class, mappedBy="auteur", orphanRemoval=true)
      */
+    #[Groups(['read_user'])]
     private $mailAutos;
 
     /**
      * @ORM\ManyToOne(targetEntity=Infos::class, inversedBy="enfants")
      */
+    #[Groups(['read_user'])]
     private $enfants;
 
 

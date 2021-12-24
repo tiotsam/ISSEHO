@@ -7,6 +7,7 @@ use App\Repository\MatieresRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=MatieresRepository::class)
@@ -24,11 +25,13 @@ class Matieres
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups(['read_cours','read_cour'])]
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    #[Groups(['read_cours','read_cour'])]
     private $image;
 
     /**

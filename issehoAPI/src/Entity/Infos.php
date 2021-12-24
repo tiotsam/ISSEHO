@@ -2,16 +2,18 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\InfosRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=InfosRepository::class)
  */
-#[ApiResource]
+// #[ApiResource]
 class Infos
 {
     /**
@@ -24,36 +26,43 @@ class Infos
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups(['read_user','read_cours','read_cour'])]
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups(['read_user','read_cours','read_cour'])]
     private $prenom;
 
     /**
      * @ORM\Column(type="integer")
      */
+    #[Groups(['read_user'])]
     private $departement;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups(['read_user'])]
     private $ville;
 
     /**
      * @ORM\Column(type="date")
      */
+    #[Groups(['read_user'])]
     private $birthDate;
 
     /**
      * @ORM\Column(type="date")
      */
+    #[Groups(['read_user'])]
     private $dateInscription;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    #[Groups(['read_user','read_cours','read_cour'])]
     private $imageUser;
 
     /**
@@ -65,6 +74,7 @@ class Infos
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="enfants")
      */
+
     private $enfants;
 
     public function __construct()

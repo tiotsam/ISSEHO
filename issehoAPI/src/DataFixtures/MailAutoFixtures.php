@@ -103,23 +103,70 @@ class MailAutoFixtures extends Fixture implements DependentFixtureInterface
             }
             $manager->persist($mail);
             $manager->persist($invite);
-            
-            
+
+            if( random_int(1,20) == 10 ){
+                $annulation = new MailAuto;
+                $annulation->setObjet($objet[3])
+                    ->setContenu("Bonjour à tous,
+                    J’ai le regret de vous informer que j’ai dû annuler la séance de ".$cour->getMatieres()->getNom()." niveau
+                    ".$cour->getNiveau()->getNom()." le ".$cour->getDateDebut()->format('d-m-Y').", à ".$cour->getDateDebut()->format('H:i:s').".
+                    Vous pouvez inscrire vos enfants à de nouvelles sessions
+                    Bien cordialement
+                    ".$cour->getAuteur()->getInfos()->getNom()." et ".$cour->getAuteur()->getInfos()->getPrenom()." du bénévole")
+                    ->setDateEnvoi($cour->getDateDebut()->sub(new DateInterval('P'.random_int(1,2).'D')))
+                    ->setAuteur($auteur)
+                    ->setCours($cour);
+                    foreach ( $cour->getParticipants() as $participant ) {
+                        
+                        $annulation->addDestinataire($participant);
+                    }
+                    $manager->persist($annulation);
+            }
+
+            if( random_int(1,20) == 10 ){
+                $enfantAnnul = new User;
+                $enfantAnnul = $cour->getParticipants()[random_int(0,sizeof($cour->getParticipants())-1)];
+                $parentAnnul = new Infos;
+                $parentAnnul = $enfantAnnul->getEnfants();
+                $annulationP = new MailAuto;
+                $annulationP->setObjet($objet[4])
+                    ->setContenu("Bonjour ".$auteur->getInfos()->getPrenom()." ".$auteur->getInfos()->getNom()." 
+                    J’ai le regret de vous informer que j’ai dû annuler l’inscription de ".$enfantAnnul->getInfos()->getPrenom()."
+                     de la séance de ".$cour->getMatieres()->getNom()." niveau ".$cour->getNiveau()->getNom()."le ".$cour->getDateDebut()->format('d-m-Y').", à ".$cour->getDateDebut()->format('H:i:s').".
+                    Bien cordialement
+                    ".$parentAnnul->getPrenom()." ".$parentAnnul->getNom() )
+                    ->setDateEnvoi($cour->getDateDebut()->sub(new DateInterval('P'.random_int(1,2).'D')))
+                    ->setAuteur($parentAnnul->getUser())
+                    ->setCours($cour)
+                    ->addDestinataire($auteur);
+                $manager->persist($annulationP);
+            }
+
         }
 
-        // $mail->setObjet()
-        // ->setContenu()
-        // ->setDateEnvoi(new \DateTime('12/16/2021'))
-        // ->setAuteur($auteur)
-        // ->setCours($cour);
-        // for ($i=0; $i < random_int(1,5); $i++) { 
-        //     $destinataire = new User;
-        //     $destinataire = $this->userRepository->findOneBy(array('email'=>'parent'.random_int(0,9).'@gmail.com'));
-        //     $mail->addDestinataire($destinataire);
-        // }
-        // $manager->persist($mail);
+        for ($k=0; $k < random_int(1,30); $k++) { 
+            $parentRDV = new User;
+            $parentRDV = $this->userRepository->findOneBy(array('email'=>'parent'.random_int(0,9).'@gmail.com'));
 
+            $profRDV = new User;
+            $profRDV = $this->userRepository->findOneBy(array('email'=>'prof'.random_int(0,9).'@gmail.com'));
+            $d = new \DateTime(random_int(1, 12) . '/' . random_int(1, 28) . '/2021');
 
+            $rdv = new MailAuto;
+            $rdv->setObjet($objet[5])
+                ->setContenu("Bonjour ".$parentRDV->getInfos()->getPrenom()." ".$parentRDV->getInfos()->getNom().",
+                Je vous confirme notre rendez-vous du ".$d->format('d-m-Y')." à 18h.
+                Vous recevrez un mail contenant le lien de la visioconférence 24h
+                avant l’heure la séance avec les instructions de connexion.
+                Bien Cordialement.
+                ".$profRDV->getInfos()->getPrenom()." ".$profRDV->getInfos()->getNom()." du bénévole")
+                ->setDateEnvoi($d->sub(new DateInterval('P1D')))
+                ->setAuteur($auteur)
+                ->setCours($cour)
+                ->addDestinataire($parentRDV);
+                $manager->persist($rdv);
+        }
+        
         $manager->flush();
     }
 

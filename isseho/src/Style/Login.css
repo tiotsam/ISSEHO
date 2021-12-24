@@ -1,0 +1,16 @@
+.inscriptionContainer{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+}
+
+
+.imageTop{
+    width: 100%;
+
+    display: flex;
+    
+}
