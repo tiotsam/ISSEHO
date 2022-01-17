@@ -11,7 +11,6 @@ import Apropos from './Pages/Apropos';
 import Footer from './Componente/Footer';
 import Login from './Pages/Login';
 
-
 function App() {
   return (
     <>

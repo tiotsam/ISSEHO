@@ -103,7 +103,7 @@ class SecurityServices {
                         break;
     
                     default:
-                        $user->setRoles(['ROLE_USER']);
+                        $user->setRoles(['ROLE_ADMIN']);
                         break;
                 }
 
