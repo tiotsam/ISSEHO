@@ -6,42 +6,42 @@ function Carte() {
 
     return (
       <div className='cards'>
-        <h1>Liste de Cours</h1>
+        <h1>Cours à venir</h1>
         <div className='cards__container'>
           <div className='cards__wrapper'>
             <ul className='cards__items'>
               <Cartedata
-                src=''
-                text='Mathématique'
+                src={require('../assets/inscription.jpg')}
+                titre='Mathématique'
+                description='fesfsesf'
                 label='Niveau 1 '
                 path='/'
               />
               <Cartedata
-                src=''
-                text='France'
+                src={require('../assets/inscription.jpg')}
+                img={require('../assets/')}
+                titre='France'
+                description='fesfsesf'
                 label='Niveau 2'
                 path='/'
               />
             </ul>
             <ul className='cards__items'>
               <Cartedata
-                src=''
-                text='Histoire'
+                src={require('../assets/inscription.jpg')}
+                titre='Histoire'
+                description='fesfsesf'
                 label='Niveau 3'
                 path='/'
               />
-              <Cartedata
-                src=''
-                text='echec'
+             <Cartedata
+                src={require('../assets/inscription.jpg')}
+                titre='echec'
+                description='fesfsesf'
                 label='Niveau 1'
                 path='/'
               />
-              <Cartedata
-                src=''
-                text='Grammaire'
-                label='Niveau 2'
-                path='/'
-              />
+            
             </ul>
           </div>
         </div>

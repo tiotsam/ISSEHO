@@ -9,12 +9,18 @@ function Cartedata(props) {
           <figure className='cards__item__pic-wrap' data-category={props.label}>
             <img
               className='cards__item__img'
-              alt='Profile'
+              alt='Background'
               src={props.src}
             />
+          <img 
+          className='cards_item_profil'
+          alt='profile'
+          src={props.img} />
           </figure>
+
           <div className='cards__item__info'>
-            <h5 className='cards__item__text'>{props.text}</h5>
+            <h5 className='cards__item__text'>{props.titre}</h5>
+            <h6 className='cards__item__description'>{props.description}</h6>
           </div>
         </Link>
       </li>
