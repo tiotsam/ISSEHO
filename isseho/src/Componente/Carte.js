@@ -12,6 +12,7 @@ function Carte() {
             <ul className='cards__items'>
               <Cartedata
                 src={require('../assets/inscription.jpg')}
+                img={require('../assets/prof1.jpg')}
                 titre='Mathématique'
                 description='fesfsesf'
                 label='Niveau 1 '
@@ -19,7 +20,7 @@ function Carte() {
               />
               <Cartedata
                 src={require('../assets/inscription.jpg')}
-                img={require('../assets/')}
+                img={require('../assets/prof1.jpg')}
                 titre='France'
                 description='fesfsesf'
                 label='Niveau 2'
@@ -29,6 +30,7 @@ function Carte() {
             <ul className='cards__items'>
               <Cartedata
                 src={require('../assets/inscription.jpg')}
+                img={require('../assets/prof1.jpg')}
                 titre='Histoire'
                 description='fesfsesf'
                 label='Niveau 3'
@@ -36,6 +38,7 @@ function Carte() {
               />
              <Cartedata
                 src={require('../assets/inscription.jpg')}
+                img={require('../assets/prof1.jpg')}
                 titre='echec'
                 description='fesfsesf'
                 label='Niveau 1'

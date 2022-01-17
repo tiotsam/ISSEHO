@@ -48,7 +48,7 @@
   .cards__item__pic-wrap {
     position: relative;
     width: 100%;
-    padding-top: 67%;
+    padding-top: 50%;
     overflow: hidden;
   }
   
@@ -61,7 +61,7 @@
     content: attr(data-category);
     position: absolute;
     bottom: 0;
-    margin-left: 10px;
+    margin-left: 300px;
     padding: 6px 8px;
     max-width: calc((100%) - 60px);
     font-size: 12px;
@@ -92,8 +92,7 @@
     height: 100px;
     border-radius: 50%;
     padding: 5px;
-    transform: translate(200px);
-    display: flex;
+    transform: translate(210px, -180px);
     object-fit: cover;
   }
   
@@ -102,7 +101,7 @@
   }
   
   .cards__item__info {
-    padding: 20px 40px 30px;
+    padding: 20px 40px 10px;
   }
   
   .cards__item__text {
