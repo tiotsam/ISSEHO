@@ -16,7 +16,8 @@ function Carte() {
                 img={require('../assets/prof1.jpg')}
                 Nom='Frédéric Pi'
                 information='Mardi 15 janvier 2022 - 16h'
-                matière='Mathématique'
+                matiere='Mathématique'
+                place='1/5'
                 path='/'
               />
               <Cartedata
@@ -24,7 +25,8 @@ function Carte() {
                 img={require('../assets/prof2.jpeg')}
                 Nom='Marine marechal'
                 information='Mercredi 16 janvier 2022 - 14h'
-                matière='Français'
+                matiere='Français'
+                place='3/5'
                 path='/'
               />
             </ul>
@@ -34,15 +36,17 @@ function Carte() {
                 img={require('../assets/prof3.jpg')}
                 Nom='Albert Bibot'
                 information='Jeudi 1 janvier 2022 - 15h'
-                matière='Histoire'
+                matiere='Histoire'
+                place='2/5'
                 path='/'
               />
              <Cartedata
                 src={require('../assets/inscription.jpg')}
                 img={require('../assets/prof4.jpg')}
-                Nom='Uguette Faris'
+                Nom='Richard Lords'
                 information='Vendredi 18 janvier 2022 - 14h30'
-                matière='Anglais'
+                matiere='Anglais'
+                place='4/5'
                 path='/'
               />
             </ul>

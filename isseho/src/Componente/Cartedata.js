@@ -1,30 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Cartedata(props) {
+function Cartedata({path,img,matiere,Nom, information,place,src}) {
   return (
-    <>
-      <li className='cards__item'>
-        <Link className='cards__item__link' to={props.path}>
-          <figure className='cards__item__pic-wrap' data-category={props.matière}>
-            <img
-              className='cards__item__img'
-              alt='Background'
-              src={props.src}
-            />
-          <img 
+    < div className='cards__item'>
+      
+        <Link className='cards__item__link' to={path}>
+        <img 
           className='cards_item_profil'
           alt='profile'
-          src={props.img} />
+          src={img} />
+           <img
+              className='cards__item__img'
+              alt='Background'
+              src={src}
+            />
+          <figure className='cards__item__pic-wrap' data-category={place}>
+        
+          
           </figure>
 
           <div className='cards__item__info'>
-            <h5 className='cards__item__text'>{props.Nom}</h5>
-            <h6 className='cards__item__description'>{props.information}</h6>
+            <h5 className='cards__item__text'>{Nom}</h5>
+            <br></br>
+            <h5 className='cards_item_matiere'>{matiere}</h5>
+            <h6 className='cards__item__description'>{information}</h6>
           </div>
         </Link>
-      </li>
-    </>
+    </div>
   );
 }
 
