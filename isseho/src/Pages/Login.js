@@ -26,7 +26,7 @@ export default function Login() {
 
             console.log(process.env.REACT_APP_URL);
 
-            const resp = await fetch( 'https://localhost:8000/api/login' , option );
+            const resp = await fetch( process.env.REACT_APP_URL + '/login' , option );
 
             if(resp.status === 200){
                 
@@ -46,7 +46,7 @@ export default function Login() {
                 // handleLog();
 
             }
-            else if(resp.status === 200){
+            else if(resp.status !== 200){
                 let obj = await resp.json();
                 seterror(obj.message);
             }
