@@ -20,7 +20,6 @@ function Footer() {
                 type='email'
                 placeholder='Votre Email'
               />
-
             </form>
           </div>
         </section>

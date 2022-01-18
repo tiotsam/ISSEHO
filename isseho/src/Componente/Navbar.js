@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import '../Style/Navbar.css'
 
 
@@ -18,7 +18,8 @@ function Navbar() {
       if (window.innerWidth <= 960) { setButton(false);} 
       else {setButton(true);}
     };
-  
+
+
   
     window.addEventListener('resize', showButton);
   
@@ -27,44 +28,44 @@ function Navbar() {
         <nav className='navbar'>
           <div className='navbar-container'>
 
-            <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+            <NavLink to='/' className='navbar-logo' onClick={closeMobileMenu}>
               ISSEHO
-            </Link>
+            </NavLink>
             <div className='menu-icon' onClick={handleClick}>
               <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
             </div>
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
 
               <li className='nav-item'>
-                <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                <NavLink to='/'  className='nav-links' onClick={closeMobileMenu}>
                   Accueil
-                </Link>
+                </NavLink>
               </li>
 
               <li className='nav-item'>
-                <Link to='/cours'className='nav-links'onClick={closeMobileMenu} >
+                <NavLink to='/cours' className='nav-links'onClick={closeMobileMenu} >
                   Cours
-                </Link>
+                </NavLink>
               </li>
 
               <li className='nav-item'>
-                <Link to='/a-propos'className='nav-links'onClick={closeMobileMenu} >
+                <NavLink to='/a-propos'className='nav-links'onClick={closeMobileMenu} >
                   À propos
-                </Link>
+                </NavLink>
               </li>
 
               <li className='nav-item'>
-                <Link
-                  to='/inscription'className='nav-links'onClick={closeMobileMenu}>
+                <NavLink
+                  to='/inscription' className='nav-links' onClick={closeMobileMenu}>
                 Inscription
-                  </Link>
+                  </NavLink>
               </li>
 
               <li className='nav-item'>
-                <Link
+                <NavLink
                   to='/login'className='nav-links'onClick={closeMobileMenu}>
                 Connexion
-                  </Link>
+                  </NavLink>
               </li>
 
             </ul>
