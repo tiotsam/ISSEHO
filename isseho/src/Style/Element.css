@@ -1,0 +1,33 @@
+
+.container{
+    flex-direction: row;
+    display: flex;
+}
+
+.titre_gauche{
+
+padding: 8px 8px;
+text-align: center;
+text-transform: capitalize;
+color: #FFFFFF;
+
+}
+
+.container_gauche{
+    width: 50%;
+    background: #9AB5AC;
+}
+
+.container_droite{
+    width: 50%;
+    background: #0F5360;
+    
+}
+
+.titre_droite{
+
+        padding: 8px 8px;
+        text-align: center;
+        text-transform: capitalize;
+        color: #FFFFFF;    
+    }
