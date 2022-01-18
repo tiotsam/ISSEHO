@@ -13,13 +13,14 @@ function Footer() {
           </p>
           <div className='input-areas'>
             <form>
+            
               <input
                 className='footer-input'
                 name='email'
                 type='email'
                 placeholder='Votre Email'
               />
-              {/* <Button buttonStyle='btn--outline'>Envoyer</Button> */}
+
             </form>
           </div>
         </section>
