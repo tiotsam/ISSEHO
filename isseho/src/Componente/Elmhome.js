@@ -1,7 +1,7 @@
 import React from 'react'
 import '../Style/Element.css'
 
-function Element() {
+function Elemhome() {
     return (
         <div className='container'>
 
@@ -24,4 +24,4 @@ function Element() {
     )
 }
 
-export default Element;
+export default Elemhome;

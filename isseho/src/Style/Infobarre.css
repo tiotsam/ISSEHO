@@ -1,0 +1,25 @@
+.container_infobarre{
+    background: white;
+    height: 20vh;
+}
+
+.infobarre_wrapper{
+  display: flex;
+  justify-content: center;
+  gap: 15%;
+  padding-top: 4%;
+}
+
+.infobarre_logo {
+    width: 100px;
+}
+
+.info_col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info_span{
+    font-weight: 600;
+}

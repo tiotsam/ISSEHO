@@ -5,7 +5,8 @@ import '../Style/Carte.css'
 function Carte() {
 
     return (
-      <div className='cards'>
+      <div className='cards' >
+        
         <h1 className='titre_text'>Soutiens Scolaire</h1>
         <h5 className='soustitre_text'>PLATEFORME SOLIDAIRE DE PARTAGE DES COMPÉTENCES</h5>
         <div className='cards__container'>

@@ -16,13 +16,6 @@ function HeaderSection() {
         <p className='text-white'>Apprendre n'as jamais était aussi facile</p>
         <div className='hero-btns'>
           <Button
-            className='btns'
-            buttonStyle='btn--outline'
-            buttonSize='btn--large'
-          >
-            Inscription
-          </Button>
-          <Button
             
             buttonStyle='btn--primary'
             buttonSize='btn--large'
@@ -30,6 +23,14 @@ function HeaderSection() {
           >
             Voir les cours 
           </Button>
+          <Button
+            className='btns'
+            buttonStyle='btn--outline'
+            buttonSize='btn--large'
+          >
+            Inscription
+          </Button>
+          
         </div>
       </div>
     );
