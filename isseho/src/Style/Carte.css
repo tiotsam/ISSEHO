@@ -3,7 +3,31 @@
     background-image: url(../assets/index.jpeg);
     background-size: cover;
   }
+
+  .icon{
+   z-index: 4;
+   color: #9AB5AC;
+   height: 100%;
+   width: 9%;
+   translate: 6.8rem 5rem;
+  }
+
+  .button_cards{
+    color: white;
+    background: #0F5360;
+    width: 50%;
+    height: 15%;
+    translate: 6.5rem 5rem;
+    border-radius: 50px 50px;
+    border: none;
   
+  }
+
+  .cards_item_icon{
+    gap: 10%;
+    height:30%;
+  }
+
 .titre_text {
     text-align: center;
   }
@@ -35,11 +59,9 @@
     flex: 1;
     margin: 0 1rem;
     border-radius: 10px;
-  }
-  
-  .cards__item__link {
+    height: 40vh;
     display: flex;
-    flex-flow: column;
+    flex-direction: column;
     width: 100%;
     box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
     -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
@@ -49,6 +71,8 @@
     text-decoration: none;
     background: white;
   }
+  
+ 
   
   .cards__item__pic-wrap {
     position: relative;
@@ -78,7 +102,7 @@
   }
   
   .cards__item__img {
-    position: absolute;
+    
     top: 0;
     right: 0;
     bottom: 0;
@@ -86,25 +110,24 @@
     display: block;
     width: 100%;
     max-width: 100%;
-    height: 40%;
+    height: 70%;
     max-height: 100%;
     object-fit: cover;
     transition: all 0.2s linear;
   }
 
   .cards_item_profil{
-    display: block;
+    position: absolute;
     background: white;
     width: 7rem;
-    height: 7rem;
+    height: 7rem; 
     border-radius: 50%;
     border: solid 4px  white;
     box-shadow:0 6px 20px rgba(3, 3, 3, 0.288) ;
-    transform: translate(0%, 50%);
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 3;
+    /* translate: 13rem 4rem; */
     object-fit: cover;
+    margin-left: 40%;
+    margin-top: 15%;
   }
   
   .cards__item__img:hover {
@@ -112,15 +135,31 @@
   }
   
   .cards__item__info {
-    padding: 20px 40px 10px;
-    position: absolute;
-    margin-top: 40%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    
+    }
+
+    .cards_item_left{
+      padding-left: 10%;
+      padding-top: 10%;
+      width: 100%;
+    }
+
+    .cards_item_right{
+
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
     }
   
   .cards__item__text {
     color: #3C6961;
     font-size: 25px;
-    margin-top: -10%;
+    
     line-height: 24px;
   }
 

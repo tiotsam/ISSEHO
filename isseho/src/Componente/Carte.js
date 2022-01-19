@@ -21,6 +21,7 @@ function Carte() {
                 place='1/5'
                 path='/'
               />
+        
               <Cartedata
                 src={require('../assets/inscription.jpg')}
                 img={require('../assets/prof2.jpeg')}

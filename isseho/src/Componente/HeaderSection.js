@@ -2,12 +2,16 @@ import React from 'react';
 import '../Style/App.css'
 import { Button } from './Button';
 import '../Style/HeaderSection.css'
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 
 function HeaderSection() {
+
+  let navigation= useNavigate();
+
     return (
       <div className='hero-container'>
         {/* <video src='../assets/v1.mp4' alt='video' autoPlay loop muted type='video/mp4' /> */}
@@ -17,10 +21,10 @@ function HeaderSection() {
         <div className='hero-btns'>
 
           
-          <Button
+          <Button 
             buttonStyle='btn--primary'
             buttonSize='btn--large'
-            onClick="location.href = 'http://localhost:3000/cours'"
+            onClick={() => navigation("/a-propos")}
           >
             Voir les cours 
           </Button>
@@ -28,6 +32,7 @@ function HeaderSection() {
             className='btns'
             buttonStyle='btn--outline'
             buttonSize='btn--large'
+            onClick={() => navigation("/inscription")}
           >
             Inscription
           </Button>
