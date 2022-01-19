@@ -15,8 +15,9 @@ function HeaderSection() {
         <h1 className='text-white'>Partager votre savoir et vos connaissance!</h1>
         <p className='text-white'>Apprendre n'as jamais était aussi facile</p>
         <div className='hero-btns'>
+
+          
           <Button
-            
             buttonStyle='btn--primary'
             buttonSize='btn--large'
             onClick="location.href = 'http://localhost:3000/cours'"
