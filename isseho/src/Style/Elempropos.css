@@ -9,7 +9,7 @@
 .container_left_text{
     background: white;
     height: 25rem;
-    width: 35rem;
+    width: 50rem;
     padding: 70px;
     display: grid;
     flex-direction: column;
@@ -40,7 +40,7 @@
 
 .container_rigth_carte{
     background: white;
-    width: 55%;
+    width: 100%;
     display: flex;
     display: row;
 }
@@ -48,28 +48,31 @@
 .container_card_right{
     display: flex;
     flex-direction: row;
+    padding-left: 40rem;
 }
 
 .card_left{
     background: red;
-    width: 10rem;
-    height: 60%;
+    width: 15rem;
+    height: 80%;
     border-radius: 20px 20px ;
     box-shadow: 2px 8px 5px gray;
 }
 
 .card_right{
     background: red;
-    width: 10rem;
-    height: 60%;
+    width: 15rem;
+    height: 80%;
     border-radius: 20px 20px ;
     box-shadow: 2px 8px 5px gray;
 }
 
 .cover_cards_left{
-    width: 10rem;
+    width: 15rem;
     border-radius: 20px;
     background-size: cover;
+    
+    
 }
 
 @media screen and (max-width: 768px) {
