@@ -15,7 +15,7 @@ function HeaderSection() {
     return (
       <div className='hero-container'>
         {/* <video src='../assets/v1.mp4' alt='video' autoPlay loop muted type='video/mp4' /> */}
-        <video  autoplay='true' className='videoHeader'type='mp4' loop='' src={require('../assets/bghome.mp4')} alt='vidéo' /> 
+        <video className='videoHeader' autoplay='autoplay' playsinline="true" preaload="auto" type='mp4' loop="true" src={require('../assets/bghome.mp4')} alt='vidéo' /> 
         <h1 className='text-white'>Partager votre savoir et vos connaissance!</h1>
         <p className='text-white'>Apprendre n'as jamais était aussi facile</p>
         <div className='hero-btns'>
