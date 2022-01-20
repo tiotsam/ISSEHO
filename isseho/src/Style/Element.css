@@ -20,12 +20,10 @@ color: #FFFFFF;
 
 .container_droite{
     width: 50%;
-    background: #0F5360;
-    
+    background: #0F5360;   
 }
 
 .titre_droite{
-
         padding: 8px 8px;
         text-align: center;
         text-transform: capitalize;

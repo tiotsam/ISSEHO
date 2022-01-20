@@ -1,10 +1,14 @@
 import React from 'react'
-import HeaderSection from '../Componente/HeaderSection'
+import Elempropos from '../Componente/Elmpropos';
+import HeaderPropos from '../Componente/HeaderPropos';
+import '../Style/App.css';
+
 
 function Apropos() {
     return (
         <div>
-            <HeaderSection/>
+         <HeaderPropos /> 
+         <Elempropos/>
         </div>
     )
 }
