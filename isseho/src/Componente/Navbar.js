@@ -4,7 +4,7 @@ import '../Style/Navbar.css'
 
 
 
-function Navbar() {
+function Navbar({ isAuthenticated , setisAuthenticated }) {
 
 
     //Si tu as des fonction pour la navbar ajoute c'est ici :p
@@ -18,7 +18,13 @@ function Navbar() {
       if (window.innerWidth <= 960) { setButton(false);} 
       else {setButton(true);}
     };
-  
+
+    const LogOut = () => {
+
+      sessionStorage.removeItem("user");
+      sessionStorage.removeItem("token");
+      setisAuthenticated(false);
+    }   
   
     window.addEventListener('resize', showButton);
   
@@ -53,19 +59,41 @@ function Navbar() {
                 </Link>
               </li>
 
-              <li className='nav-item'>
+              { !isAuthenticated && <li className='nav-item'>
                 <Link
                   to='/inscription'className='nav-links'onClick={closeMobileMenu}>
                 Inscription
                   </Link>
-              </li>
+              </li>}
 
-              <li className='nav-item'>
+              { !isAuthenticated && <li className='nav-item'>
                 <Link
                   to='/login'className='nav-links'onClick={closeMobileMenu}>
                 Connexion
                   </Link>
-              </li>
+              </li>}
+
+              { isAuthenticated && <li className='nav-item'>
+                <Link
+                  to='/search'className='nav-links'onClick={closeMobileMenu}>
+                Recherche
+                  </Link>
+              </li>}
+
+
+              { isAuthenticated && <li className='nav-item'>
+                <Link
+                  to='/MonCpt'className='nav-links'onClick={closeMobileMenu}>
+                Mon Compte
+                  </Link>
+              </li>}
+
+              { isAuthenticated && <li className='nav-item'>
+                <Link
+                  to='/' className='nav-links'onClick={closeMobileMenu, LogOut}>
+                Se Déconnecter
+                  </Link>
+              </li>}
 
             </ul>
                 

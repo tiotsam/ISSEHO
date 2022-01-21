@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import '../Style/Login.css'
 import jwtDecode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
+export default function Login({setisAuthenticated}) {
 
     const [error, seterror] = useState(null);
+    let navigate = useNavigate();
 
     const Login = async (e) =>{
 
@@ -30,8 +32,9 @@ export default function Login() {
 
             if(resp.status === 200){
                 
-                console.log('user logged');
+                
                 const jwt = await resp.json();
+                
 
                 let user = {
                     id : jwtDecode(jwt.token).id,
@@ -42,9 +45,10 @@ export default function Login() {
                 sessionStorage.setItem('user', JSON.stringify(user));
                 sessionStorage.setItem('token', jwt.token);
 
-                // setisAuthenticated(true);
-                // handleLog();
-
+                console.log('user logged');
+                console.log(jwtDecode(sessionStorage.getItem('token')));
+                setisAuthenticated(true);
+                navigate('/');
             }
             else if(resp.status !== 200){
                 let obj = await resp.json();
@@ -55,7 +59,7 @@ export default function Login() {
         }
 
     }
-
+    
     return (
         <div className='login-container'>
             <img className='img-fond' src={require('../assets/inscription.jpg')} alt="fond" />

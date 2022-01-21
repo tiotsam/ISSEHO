@@ -19,7 +19,7 @@ class SecurityServices {
         $this->userRep = $userRep;
     }
 
-    public function register( $email , $prenom , $nom , $pass , $role , $departement , $ville , $birthdate , $dateInscription , $img = NULL , $parent = NULL)
+    public function register( $email , $prenom , $nom , $pass , $role , $rue , $departement , $ville , $birthdate , $dateInscription , $img = NULL , $parent = NULL)
     {
 
         $user = new User;
@@ -39,6 +39,8 @@ class SecurityServices {
 
         if(empty($pass)){
             throw new Exception("Le mot de passe doit être renseigné");
+        }else if( strlen($pass) < 7){
+            throw new Exception("Le mot de passe doit avoir au moins 6 caractères");
         }
 
 
@@ -50,9 +52,30 @@ class SecurityServices {
         if(empty($img)){
             $img = 'https://jfim.org/wp-content/uploads/2016/11/portrait-anonyme.png';
         }
+        
+        if(empty($rue)){
+            throw new Exception("La rue doit être renseignée");
+        }
 
         if(empty($departement)){
             throw new Exception("Le département doit être renseigné");
+        }else{
+
+            if ( strlen($departement)  === 2 || strlen($departement) === 3) {
+                if ( !is_numeric($departement)) {
+                    if ($departement !== '2A' && $departement !== '2a' && $departement !== '2B' && $departement !== '2b') {
+                        throw new Exception('Le département doit être un nombre');
+                    }
+                } else if ( $departement < 0 || $departement > 95 || $departement == 20) {
+                    if ( $departement < 971 || $departement > 974 && $departement != 976) {
+    
+                        throw new Exception('Merci de renseigner un numéro de département valide');
+    
+                    }
+                }
+            } else {
+                throw new Exception('Un département doit être entre 2 et 3 caractères.');
+            }
         }
 
         if(empty($ville)){
@@ -73,7 +96,7 @@ class SecurityServices {
         }
         else{
             if( is_string($dateInscription) ){
-                $dateInscription = new \DateTime($dateInscription);
+                $dateInscription = new \DateTime();
             }
         }
 
@@ -110,6 +133,7 @@ class SecurityServices {
                 $info->setPrenom($prenom)
                 ->setNom($nom)
                 ->setDepartement($departement)
+                ->setRue($rue)
                 ->setVille($ville)
                 ->setBirthDate($birthdate)
                 ->setDateInscription($dateInscription)

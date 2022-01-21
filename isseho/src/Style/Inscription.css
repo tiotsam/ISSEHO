@@ -1,4 +1,6 @@
 .container2-transp{
+    padding: 2%;
+    gap: 3%;
     margin-top: 5%;
     width: 50%;
     height: 85%;
@@ -10,10 +12,10 @@
 }
 
 .container2-dark{
-    margin: 4%;
-    padding: 1%;
+    padding: 5%;
+    gap: 3%;
     width: 100%;
-    height: 90%;
+    height: 100%;
     background-color: #202020;
     display: flex;
     align-items: center;
@@ -21,22 +23,20 @@
 }
 
 .register-img{
-    margin: 4%;
-    width: 100%;
-    height: 90%;
-    object-fit: none;
-    background-color: white;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .registerForm{
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     color: white;
     display: flex;
     flex-direction: column;
     font-family: Roboto;
     align-items: center;
-    gap: 2%;
+    gap: 3.5%;
 }
 
 .form-champ-double{
@@ -44,6 +44,7 @@
     height: 9%;
     display: flex;
     flex-direction: row;
+    gap: 5%;
 }
 
 .form-sschamp-double{
@@ -51,4 +52,9 @@
     flex-direction: column;
     width: 50%;
     gap: 4%;
+}
+
+.errorMsg{
+    color: red;
+    font-weight: bold;
 }
