@@ -1,0 +1,8 @@
+.container_module2{
+    width: 100%;
+    height: 100%;
+}
+.container_bg_module2{
+    width: 100%;
+    filter : brightness(45%);
+}

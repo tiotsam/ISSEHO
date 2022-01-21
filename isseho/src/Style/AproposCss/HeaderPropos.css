@@ -1,0 +1,24 @@
+.img_bg {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+  filter : brightness(60%);
+  
+}
+  
+
+ .text-white{
+   color: white;
+   align-items: center;
+   font-size: 2rem;
+   font-weight: 600;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ }
+
+ .text-white-p{
+  color: white;
+  align-items: center;
+  padding-top: 1rem;
+}
