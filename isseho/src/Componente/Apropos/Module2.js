@@ -4,10 +4,28 @@ import '../../Style/AproposCss/Module2.css'
 function Module2() {
   return (
 
-  <div className='container_module2'>
-      <img className='container_bg_module2' src={require('../../assets/module_2_bg.jpg')} />
-      <div className='module2_text'>
+  <div className='module2_wrapper'>
 
+        <div className='text_block'>
+          <h1>Espace de partage</h1>
+          <h5>Savoirs & Connaissances</h5>
+        </div>
+
+      <div className='bulle_block'>
+        <dvi className='bulle_ligne'>
+          <img className='icon_fix' src={require('../../assets/prof1.jpg')}></img>
+          <img className='icon_fix' src={require('../../assets/prof1.jpg')}></img>
+        </dvi>
+        <dvi className='bulle_ligne'>
+          <img className='icon_fix' src={require('../../assets/prof1.jpg')}></img>
+          <img className='icon_fix' src={require('../../assets/prof1.jpg')}></img>
+        </dvi>
+      </div>
+      <div className='container_text_m'></div>
+      <div className='text_block_m'>
+        <h1 className='text_1_m'>PLATEFORME SOLIDAIRE DE PARTAGE DES COMPÉTENCES</h1>
+        <div className='elem_1_m'></div>
+        <p className='text_2_m'>La plateforme ISSEHO se veut un espace de partage des savoirs et connaissances mis à disposition de tous les citoyens et citoyennes qui pensent qu’il est nécessaire de rester solidaire face à la crise du COVID19. </p>
       </div>
   </div>
   

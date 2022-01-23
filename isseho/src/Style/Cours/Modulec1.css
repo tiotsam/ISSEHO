@@ -1,0 +1,16 @@
+.barre_container{
+    width: 100%;
+    height: 100%;
+}
+
+.barre_top{
+    height: 5rem;
+    background: #202020;
+}
+
+.input_cours{
+    border-radius: 10px;
+    width: 8rem; 
+    margin-left: 50rem;
+    margin-top: 2rem;
+}

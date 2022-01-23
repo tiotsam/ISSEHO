@@ -1,8 +1,101 @@
-.container_module2{
+
+
+.module2_wrapper{
+    
     width: 100%;
-    height: 100%;
+    height: 50rem;
+    display: flex;
+    flex-direction: column;
+    background-image: url(../../assets/module_2_bg.jpg);
+    background-size: cover;
+
+
 }
-.container_bg_module2{
+
+.filtre{
+
+background-color: black;
+position: absolute;
+width: 100vw;
+height: 30rem;
+z-index: 2;
+}
+
+.text_block{
+
     width: 100%;
-    filter : brightness(45%);
+    height: 6rem;
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+    color: white;
+}
+
+.bulle_block{
+    
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 2rem;
+    padding-top: 6rem;
+    height: 20rem;
+
+}
+
+.bulle_ligne{
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    
+}
+
+.icon_fix{
+width: 100px;
+height: 100px;
+border-radius: 50%;
+}
+
+.container_text_m{
+  
+        width: 100%;
+        height: 30rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: row;
+        background-size: cover;
+}
+
+.text_block_m{
+   
+    width: 80%;
+    height: 100%;
+    margin-left: 8rem;
+}
+
+.text_1_m{
+    padding-top: 1rem;
+    color: white;
+    font-size: 15px;
+    padding-bottom: 2rem;
+    text-align: justify;
+}
+
+.text_2_m{
+
+    padding-top: 2rem;
+    color: white;
+    font-size: 16px;
+    width: 30rem;
+    text-align: justify;
+}
+
+.elem_1_m{
+
+    background:coral;
+    width: 30rem;
+    height: 0.2rem;
+    color: coral;
 }
