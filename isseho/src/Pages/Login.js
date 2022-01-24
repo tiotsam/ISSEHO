@@ -48,7 +48,7 @@ export default function Login({setisAuthenticated}) {
                 console.log('user logged');
                 console.log(jwtDecode(sessionStorage.getItem('token')));
                 setisAuthenticated(true);
-                navigate('/');
+                navigate('/MonCpt');
             }
             else if(resp.status !== 200){
                 let obj = await resp.json();

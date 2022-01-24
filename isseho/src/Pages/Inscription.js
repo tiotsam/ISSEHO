@@ -5,15 +5,30 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Inscription({setisAuthenticated}) {
 
-    const [error, seterror] = useState(null);
+    const [error, seterror] = useState('');
     var validator = require("email-validator");
     let navigate = useNavigate();
+
+    function CalculAge(birthdate) {  
+    
+        var today = new Date();
+        var dateNaissance = new Date(birthdate);
+        
+        var age = today.getFullYear() - dateNaissance.getFullYear();
+        var m = today.getMonth() - dateNaissance.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < dateNaissance.getDate())) {
+            age = age - 1;
+        }
+        
+        // On retourne l'age
+        return age;
+    }
 
     const register = async (e) => {
 
         e.preventDefault();
-        seterror(null);
-        
+        seterror('');
+
         // On récupère les données du formulaire
         
         let roleUser = e.target.typeUser.value == 'Professeur' ? 'prof' : 'parent';
@@ -58,16 +73,18 @@ export default function Inscription({setisAuthenticated}) {
             seterror('Un département doit être entre 2 et 3 caractères.');
         }
         
-        if( new Date(birthdate) - today < 18){
+        // On teste l'age de l'utilisateur
+        if( CalculAge(birthdate) < 18){
+            console.log('age : ' + CalculAge(birthdate) );
             seterror('Vous devez être adulte pour vous inscrire sur ce site.');
+            console.log("J'ai vu que l'age est trop petit");
+            console.log(error);
         }
         
-        console.log(error);
         // Si tout est Bon, on l'envoie dans le back
+        if (error === '') {
 
-        if (error !== undefined) {
             console.log('Données valides');
-
             let options = {
                 method: 'POST',
                 body: JSON.stringify({
@@ -97,6 +114,7 @@ export default function Inscription({setisAuthenticated}) {
 
                 console.log('Utilisateur Enregistré');
 
+                // Une fois l'utilisateur enregistré, on le connecte 
                 let optionLog = {
                     method: 'POST',
                     body: JSON.stringify({
@@ -109,15 +127,14 @@ export default function Inscription({setisAuthenticated}) {
                     },
                 }
 
-                console.log(process.env.REACT_APP_URL);
-
                 const resplog = await fetch(process.env.REACT_APP_URL + '/login', optionLog);
 
-                if (resplog === 200) {
+                if (resplog.status  === 200) {
 
                     console.log('utilisateur connectéé');
 
                     const jwt = await resplog.json();
+                    console.log(jwt);
 
                     let user = {
                         id: jwtDecode(jwt.token).id,
@@ -125,19 +142,21 @@ export default function Inscription({setisAuthenticated}) {
                         role: jwtDecode(jwt.token).roles
                     }
 
-                    sessionStorage.setItem('user', JSON.stringify(user));
-                    sessionStorage.setItem('token', jwt.token);
+                    console.log(sessionStorage.getItem('user'));
+                    console.log(sessionStorage.getItem('token'));
 
                     setisAuthenticated(true);
                     navigate('/MonCpt');
                 }
                 else{
-                    seterror(resplog);
+                    console.log("le log n'a pas fonctionné");
+                    const returnLog = await resplog.json();
+                    seterror(returnLog);
                 }
             }
             else {
-                console.log(resp);
-                seterror(resp.stringify);
+                const registerRet = await resp.json();
+                seterror(registerRet);
             }
         }
 

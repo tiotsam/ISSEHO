@@ -39,7 +39,7 @@ class SecurityServices {
 
         if(empty($pass)){
             throw new Exception("Le mot de passe doit être renseigné");
-        }else if( strlen($pass) < 7){
+        }else if( strlen($pass) < 6){
             throw new Exception("Le mot de passe doit avoir au moins 6 caractères");
         }
 
