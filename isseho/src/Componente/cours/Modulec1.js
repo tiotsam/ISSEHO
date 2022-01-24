@@ -6,7 +6,7 @@ function Modulec1() {
 
     <div className='barre_container'>
       <div className='barre_top'>
-        <input className='input_cours' placeholder='recherche'></input>
+        {/* <input className='input_cours' placeholder='recherche'></input> */}
       </div>
       </div>
 
