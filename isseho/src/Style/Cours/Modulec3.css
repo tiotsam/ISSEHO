@@ -3,7 +3,23 @@
     height: 50rem;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: row;
 }
+
+.container_cc{
+    background: red;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: row;
+    padding-top: 200px;
+
+}
+
+
+
+
+
 

@@ -6,7 +6,7 @@ function Modulec3() {
     return (
     
                 <div className="card_search">
-                    <div>
+                    <div className="container_cc">
                         <ul className='cards__items'>
                             <Cartedata
                                 src={require('../../assets/inscription.jpg')}
