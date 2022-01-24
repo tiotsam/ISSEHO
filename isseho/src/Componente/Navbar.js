@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import '../Style/Navbar.css'
 
 
@@ -48,12 +48,6 @@ function Navbar({ isAuthenticated , setisAuthenticated }) {
               </li>
 
               <li className='nav-item'>
-                <NavLink to='/cours' className='nav-links'onClick={closeMobileMenu} >
-                  Cours
-                </NavLink>
-              </li>
-
-              <li className='nav-item'>
                 <NavLink to='/a-propos'className='nav-links'onClick={closeMobileMenu} >
                   À propos
                 </NavLink>
@@ -75,7 +69,7 @@ function Navbar({ isAuthenticated , setisAuthenticated }) {
 
               { isAuthenticated && <li className='nav-item'>
                 <Link
-                  to='/search'className='nav-links'onClick={closeMobileMenu}>
+                  to='/cours'className='nav-links'onClick={closeMobileMenu}>
                 Recherche
                   </Link>
               </li>}
@@ -90,7 +84,7 @@ function Navbar({ isAuthenticated , setisAuthenticated }) {
 
               { isAuthenticated && <li className='nav-item'>
                 <Link
-                  to='/' className='nav-links'onClick={closeMobileMenu, LogOut}>
+                  to='/' className='nav-links'onClick={LogOut}>
                 Se Déconnecter
                   </Link>
               </li>}
