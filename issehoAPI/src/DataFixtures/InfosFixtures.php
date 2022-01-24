@@ -32,7 +32,8 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
         $ville = array('abilly', 'paris', 'marseille', 'lyon', 'toulouse', 'nice', 'rennes', 'reims', 'toulon', 'saint-étienne', 'le havre', 'grenoble', 'dijon', 'angers', 'villeurbanne', 'Saint-denis');
         $imageuser = array('https://us.123rf.com/450wm/kritchanut/kritchanut1401/kritchanut140100054/25251050-photo-de-profil-d-affaires-de-l-avatar.jpg?ver=6');
         $imageenfant = array('https://us.123rf.com/450wm/kritchanut/kritchanut1401/kritchanut140100054/25251050-photo-de-profil-d-affaires-de-l-avatar.jpg?ver=6');
-
+        $typeRue = array('rue','boulevard','avenue');
+        $nomRue = array('général de Gaulle','Clémenceau','de Paris','Léon Blum','de Brest','de Reims','de Laon','Léonard de Vinci');
 
         for ($i = 0; $i < 10; $i++) {
 
@@ -46,6 +47,7 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
                 ->setPrenom($prenom[random_int(0, sizeof($prenom) - 1)])
                 ->setDepartement(random_int(1, 95))
                 ->setVille($ville[random_int(0, sizeof($ville) - 1)])
+                ->setRue(random_int(1,300).' '.$typeRue[random_int(0,sizeof($typeRue) - 1)].' '.$nomRue[random_int(0,sizeof($nomRue)-1)])
                 ->setBirthDate($birthdate)
                 ->setImageUser($imageuser[random_int(0, sizeof($imageuser) - 1)])
                 ->setDateInscription($dateinscription)
@@ -72,6 +74,7 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
                 ->setPrenom($prenom[random_int(0, sizeof($prenom) - 1)])
                 ->setDepartement(random_int(1, 95))
                 ->setVille($ville[random_int(0, sizeof($ville) - 1)])
+                ->setRue(random_int(1,300).' '.$typeRue[random_int(0,sizeof($typeRue) - 1)].' '.$nomRue[random_int(0,sizeof($nomRue)-1)])
                 ->setBirthDate($birthdate)
                 ->setImageUser($imageuser[random_int(0, sizeof($imageuser) - 1)])
                 ->setDateInscription($dateinscription)
@@ -101,6 +104,7 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
                 ->setPrenom($prenom[random_int(0, sizeof($prenom) - 1)])
                 ->setDepartement(random_int(1, 95))
                 ->setVille($ville[random_int(0, sizeof($ville) - 1)])
+                ->setRue(random_int(1,300).' '.$typeRue[random_int(0,sizeof($typeRue) - 1)].' '.$nomRue[random_int(0,sizeof($nomRue)-1)])
                 ->setBirthDate($birthdate)
                 ->setImageUser($imageenfant[random_int(0, sizeof($imageenfant) - 1)])
                 ->setDateInscription($dateinscription)
