@@ -203,7 +203,7 @@ export default function Inscription({setisAuthenticated}) {
                         </div>
 
                         <div className='form-champ'>
-                            <label className='form-label'>Rue :</label>
+                            <label className='form-label'>Adresse :</label>
                             <input className='form-input' type='text' name='rue' id='rue' required placeholder='Veuillez renseigner votre rue' />
                         </div>
 
