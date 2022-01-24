@@ -52,26 +52,6 @@ function Carte() {
                 path='/'
               />
             </ul>
-            <ul className='cards__items'>
-              <Cartedata
-                src={require('../assets/inscription.jpg')}
-                img={require('../assets/prof3.jpg')}
-                Nom='Albert Bibot'
-                information='Jeudi 1 janvier 2022 - 15h'
-                matiere='Histoire'
-                place='2/5'
-                path='/'
-              />
-             <Cartedata
-                src={require('../assets/inscription.jpg')}
-                img={require('../assets/prof4.jpg')}
-                Nom='Richard Lords'
-                information='Vendredi 18 janvier 2022 - 14h30'
-                matiere='Anglais'
-                place='4/5'
-                path='/'
-              />
-            </ul>
           </div>
         </div>
       </div>
