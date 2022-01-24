@@ -7,11 +7,28 @@ export default function MonCpt() {
   const [user, setUser] = useState('');
   const [isLoaded, setisLoaded] = useState(false);
 
-  useEffect(() => {
+  useEffect( async () => {
 
     // On récupère l'id du user connecté
     let userId = JSON.parse(sessionStorage.getItem('user')).id;
-    console.log(userId);
+
+    let opt = {
+      method: 'GET',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+      },
+  }
+
+  const respUser = await fetch(process.env.REACT_APP_URL + '/users/' + userId, opt);
+
+  if(respUser.status === 200){
+
+    setUser(await respUser.json());
+    console.log(user);
+    setisLoaded(true);
+  }
+
   }, []);
   
 
@@ -23,7 +40,7 @@ export default function MonCpt() {
         <div className='topBar'/>
           <div className='containerCptBoard'>
             
-            <FichePerso />
+            <FichePerso nom={user.infos.nom} prenom={user.infos.prenom} mail={user.email} adrs={user} />
             <Mail />
 
           </div>

@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function FichePerso({nom,prenom,mail,adrs,dpt,ville,birthdate,role}) {
-  return (
+  const [error, seterror] = useState('');
+
+  const updateUser = async (e)=>{
+      e.preventDefault();
+  }
+
+    return (
     <div className='containerFicheUser'>
-        <form>
+        <form onSubmit={updateUser}>
             <img/>
+            <span>{error}</span>
             <label>Nom :</label>
             <input type='text' placeholder={nom}></input>
             <label>Prénom :</label>
@@ -25,6 +32,7 @@ export default function FichePerso({nom,prenom,mail,adrs,dpt,ville,birthdate,rol
             <input type='text' placeholder={birthdate}></input>
             <label>Role :</label>
             <input placeholder={role}></input>
+            <input type='submit'></input>
         </form>
     </div>)
 }
