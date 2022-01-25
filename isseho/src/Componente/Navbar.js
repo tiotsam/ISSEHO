@@ -21,6 +21,7 @@ function Navbar({ isAuthenticated , setisAuthenticated }) {
 
     const LogOut = () => {
 
+      closeMobileMenu();
       sessionStorage.removeItem("user");
       sessionStorage.removeItem("token");
       setisAuthenticated(false);
@@ -90,7 +91,7 @@ function Navbar({ isAuthenticated , setisAuthenticated }) {
 
               { isAuthenticated && <li className='nav-item'>
                 <Link
-                  to='/' className='nav-links'onClick={closeMobileMenu, LogOut}>
+                  to='/' className='nav-links'onClick={LogOut}>
                 Se Déconnecter
                   </Link>
               </li>}

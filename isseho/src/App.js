@@ -13,6 +13,8 @@ import Login from './Pages/Login';
 import { hasAuthenticated } from './services/AuthService';
 import MonCpt from './Pages/MonCpt';
 import Recherche from './Pages/Recherche';
+import '/node_modules/react-grid-layout/css/styles.css';
+import '/node_modules/react-resizable/css/styles.css';
 
 function App() {
 
