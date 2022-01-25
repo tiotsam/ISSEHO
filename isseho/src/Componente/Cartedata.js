@@ -2,7 +2,7 @@ import React from 'react';
 import { IoSchoolSharp } from 'react-icons/io5';
 
 
-function Cartedata({ path, img, matiere, Nom, information, place, src }) {
+function Cartedata({ img, matiere, nomAuteur, information, src }) {
   return (
     < div className='cards__item'>
 
@@ -22,7 +22,7 @@ function Cartedata({ path, img, matiere, Nom, information, place, src }) {
 
       <div className='cards__item__info'>
         <div className='cards_item_left'>
-          <h5 className='cards__item__text'>{Nom}</h5>
+          <h5 className='cards__item__text'>{nomAuteur}</h5>
           <br></br>
           <h5 className='cards_item_matiere'>{matiere}</h5>
           <h6 className='cards__item__description'>{information}</h6>

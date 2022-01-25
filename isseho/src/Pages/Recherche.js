@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 
 export default function Recherche() {
 
-    useEffect(() => {
-      
-    
-      
+    useEffect(async () => {
+
+
+
     }, []);
-    
+
   return <div>Page de recherche</div>;
 }

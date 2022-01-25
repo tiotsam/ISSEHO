@@ -15,7 +15,7 @@ function Carte() {
               <Cartedata
                 src={require('../assets/inscription.jpg')}
                 img={require('../assets/prof1.jpg')}
-                Nom='Frédéric Pi'
+                nomAuteur='Frédéric Pi'
                 information='Mardi 15 janvier 2022 - 16h'
                 matiere='Mathématique'
                 place='1/5'
@@ -25,7 +25,7 @@ function Carte() {
               <Cartedata
                 src={require('../assets/inscription.jpg')}
                 img={require('../assets/prof2.jpeg')}
-                Nom='Marine marechal'
+                nomAuteur='Marine marechal'
                 information='Mercredi 16 janvier 2022 - 14h'
                 matiere='Français'
                 place='3/5'
@@ -36,7 +36,7 @@ function Carte() {
               <Cartedata
                 src={require('../assets/inscription.jpg')}
                 img={require('../assets/prof3.jpg')}
-                Nom='Albert Bibot'
+                nomAuteur='Albert Bibot'
                 information='Jeudi 1 janvier 2022 - 15h'
                 matiere='Histoire'
                 place='2/5'
@@ -45,7 +45,7 @@ function Carte() {
              <Cartedata
                 src={require('../assets/inscription.jpg')}
                 img={require('../assets/prof4.jpg')}
-                Nom='Richard Lords'
+                nomAuteur='Richard Lords'
                 information='Vendredi 18 janvier 2022 - 14h30'
                 matiere='Anglais'
                 place='4/5'
