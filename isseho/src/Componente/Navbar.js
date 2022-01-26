@@ -6,6 +6,9 @@ import '../Style/Navbar.css'
 
 function Navbar({ isAuthenticated , setisAuthenticated }) {
 
+    // if(localStorage.getItem('token') !== null){
+    //   isAuthenticated = true;
+    // }
 
     //Si tu as des fonction pour la navbar ajoute c'est ici :p
     const [click, setClick] = useState(false);
@@ -22,8 +25,8 @@ function Navbar({ isAuthenticated , setisAuthenticated }) {
     const LogOut = () => {
 
       closeMobileMenu();
-      sessionStorage.removeItem("user");
-      sessionStorage.removeItem("token");
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
       setisAuthenticated(false);
     }   
   

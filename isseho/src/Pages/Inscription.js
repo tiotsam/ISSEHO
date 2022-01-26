@@ -142,8 +142,11 @@ export default function Inscription({setisAuthenticated}) {
                         role: jwtDecode(jwt.token).roles
                     }
 
-                    console.log(sessionStorage.getItem('user'));
-                    console.log(sessionStorage.getItem('token'));
+                    localStorage.setItem('user');
+                    localStorage.setItem('token');
+
+                    console.log(localStorage.getItem('user'));
+                    console.log(localStorage.getItem('token'));
 
                     setisAuthenticated(true);
                     navigate('/MonCpt');
