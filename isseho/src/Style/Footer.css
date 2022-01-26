@@ -162,7 +162,7 @@
 
   .popup_footer{
     background: #303030;
-    width: 30rem;
+    width: 25rem;
     height: 20rem;
     margin-bottom: 1rem;
     border-radius: 20px;
@@ -173,7 +173,7 @@
   .container_popup{
     display: flex;
     flex-direction: column;
-    margin-left: 8rem;
+    margin-left: 5.3rem;
     width: 15rem;
   }
  
@@ -199,12 +199,13 @@
     height: 2rem;
     border-radius: 20px;
     border: none;
-    margin-left: 4.3rem;
+    margin-left: 3.8rem;
     margin-top: 1rem;
     background: #0F5360;
     box-shadow: 0 6px 15px rgba(10, 10, 10, 0.342);
     color: white;
     font-weight: 600;
+    cursor: pointer;
 
   }
   
