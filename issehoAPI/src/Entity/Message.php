@@ -21,6 +21,7 @@ class Message
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+    #[Groups(['read_user'])]
     private $id;
 
     /**

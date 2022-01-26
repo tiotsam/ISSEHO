@@ -42,11 +42,11 @@ export default function Login({setisAuthenticated}) {
                     role : jwtDecode(jwt.token).roles
                 }
                 
-                sessionStorage.setItem('user', JSON.stringify(user));
-                sessionStorage.setItem('token', jwt.token);
+                localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('token', jwt.token);
 
                 console.log('user logged');
-                console.log(jwtDecode(sessionStorage.getItem('token')));
+                console.log(jwtDecode(localStorage.getItem('token')));
                 setisAuthenticated(true);
                 navigate('/MonCpt');
             }

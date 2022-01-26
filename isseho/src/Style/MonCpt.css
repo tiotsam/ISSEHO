@@ -29,4 +29,36 @@
 .containerCptBoard{
     height: 100%;
     width: 100%;
+    padding: 0.5%;
+}
+
+.carte{
+    background-color: grey;
+}
+
+/* La fiche utilisateur */
+.ficheUser{
+    background-color: rgb(245, 245, 245);
+    border : solid 1px black;
+    border-radius: 1rem;
+    padding: 0.5%;
+    box-shadow: black;
+}
+
+/* Widget Messagerie */
+.messagerie{
+    background-color: rgb(245, 245, 245);
+    border : solid 1px black;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.topImg{
+    width: 100%;
+    height: 3rem;
+    object-fit: cover;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom: solid black 1px;
 }

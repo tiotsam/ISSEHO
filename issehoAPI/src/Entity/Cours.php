@@ -48,13 +48,13 @@ class Cours
      * @ORM\ManyToOne(targetEntity=user::class, inversedBy="cours")
      * @ORM\JoinColumn(nullable=false)
      */
-    #[Groups(['read_cours','read_cour'])]
+    #[Groups(['read_cours'])]
     private $Auteur;
 
     /**
      * @ORM\ManyToMany(targetEntity=user::class)
      */
-    #[Groups(['read_cours','read_cour'])]
+    #[Groups(['read_cours'])]
     private $participants;
 
     /**

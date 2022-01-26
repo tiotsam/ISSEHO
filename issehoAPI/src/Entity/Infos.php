@@ -74,7 +74,6 @@ class Infos
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="enfants")
      */
-
     private $enfants;
 
     /**
