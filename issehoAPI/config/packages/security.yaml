@@ -49,5 +49,10 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
         - { path: ^/api/register, roles: PUBLIC_ACCESS }
-        - { path: ^/api,       roles: PUBLIC_ACCESS }
+        - { path: ^/api/cours/countCours, roles: PUBLIC_ACCESS }
+        - { path: ^/api/cours/home, roles: PUBLIC_ACCESS }
+        - { path: ^/api/users/countProf, roles: PUBLIC_ACCESS }
+        - { path: ^/api/users/countParent, roles: PUBLIC_ACCESS }
+        - { path: ^/api/users/countEnfant, roles: PUBLIC_ACCESS }
+        - { path: ^/api, roles: PUBLIC_ACCESS}
         # - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
