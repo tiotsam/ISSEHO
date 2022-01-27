@@ -39,6 +39,105 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     // /**
     //  * @return User[] Returns an array of User objects
     //  */
+    public function findChildren($idParent)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.enfants = :idParent')
+            ->setParameter('idParent', $idParent)
+            ->orderBy('u.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    // /**
+    //  * @return User[] Returns an array of User objects
+    //  */
+    public function findByRoleProf()
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :role')
+            ->setParameter('role', "%ROLE_PROF%")
+            ->orderBy('u.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    // /**
+    //  * @return User[] Returns an array of User objects
+    //  */
+    public function findByRoleParent()
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :role')
+            ->setParameter('role', '%ROLE_PARENT%')
+            ->orderBy('u.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    // /**
+    //  * @return User[] Returns an array of User objects
+    //  */
+    public function findByRoleEnfant()
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :role')
+            ->setParameter('role', '%ROLE_ENFANT%')
+            ->orderBy('u.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+        // /**
+    //  * @return User[] Returns an array of User objects
+    //  */
+    public function countProf()
+    {
+        return $this->createQueryBuilder('u')
+            ->select('COUNT(u)')
+            ->andWhere('u.roles LIKE :role')
+            ->setParameter('role', "%ROLE_PROF%")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    // /**
+    //  * @return User[] Returns an array of User objects
+    //  */
+    public function countParent()
+    {
+        return $this->createQueryBuilder('u')
+            ->select('COUNT(u)')
+            ->andWhere('u.roles LIKE :role')
+            ->setParameter('role', '%ROLE_PARENT%')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    // /**
+    //  * @return User[] Returns an array of User objects
+    //  */
+    public function countEnfant()
+    {
+        return $this->createQueryBuilder('u')
+            ->select('COUNT(u)')
+            ->andWhere('u.roles LIKE :role')
+            ->setParameter('role', '%ROLE_ENFANT%')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
+
+    // /**
+    //  * @return User[] Returns an array of User objects
+    //  */
     /*
     public function findByExampleField($value)
     {
