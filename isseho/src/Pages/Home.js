@@ -4,6 +4,7 @@ import Elmhome from '../Componente/Elmhome';
 import HeaderSection from '../Componente/HeaderSection';
 import Infobarre from '../Componente/Infobarre';
 import '../Style/App.css';
+import '../Style/Home.css'
 
 
 
@@ -72,10 +73,10 @@ function Home() {
 
     <>
       <HeaderSection />
-      {isLoaded && <Infobarre nbrcours={nbcours} nbprof={nbprof} nbenfant={nbenfant} />}
-      {!isLoaded && <Infobarre nbrcours={0} nbprof={0} nbenfant={0} />}
+      {isLoaded && <Infobarre nbcours={nbcours} nbprof={nbprof} nbenfant={nbenfant} />}
+      {!isLoaded && <Infobarre nbcours="0" nbprof="0" nbenfant="0" />}
       {isLoadedCarte && <Carte cours={cours} />}
-      {!isLoadedCarte && <div> Loading... </div>}
+      {!isLoadedCarte && <div className='load_fixe'> Loading... </div>}
 
       <Elmhome />
     </>

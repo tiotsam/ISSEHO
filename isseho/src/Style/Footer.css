@@ -162,19 +162,23 @@
 
   .popup_footer{
     background: #303030;
-    width: 25rem;
-    height: 20rem;
+    width: 50rem;
+    height: 30rem;
     margin-bottom: 1rem;
     border-radius: 20px;
     margin-left: 0.5rem;
     box-shadow: 0 6px 15px rgba(10, 10, 10, 0.342);
   }
-
+  .top_popup_img{
+    
+  }
   .container_popup{
     display: flex;
     flex-direction: column;
-    margin-left: 5rem;
-    width: 15rem;
+    align-items: center;
+    padding-top: 8.5rem;
+    justify-content: center;
+    width: 100%;
   }
  
 
@@ -185,13 +189,18 @@
   
   .area_popup{
     resize: none;
-    height: 7rem;
+    width: 90%;
+    height: 8rem;
     box-shadow: 0 6px 15px rgba(10, 10, 10, 0.342);
   }
 
   .input_popup{
-    width: 10rem;
+    width: 50%;
+    height: 2rem;
     box-shadow: 0 6px 15px rgba(10, 10, 10, 0.342);
+    border-radius: 20px;
+    border: none;
+    padding-left: 1rem;
   }
   
   .button_popup{
@@ -199,8 +208,7 @@
     height: 2rem;
     border-radius: 20px;
     border: none;
-    margin-left: 4rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
     background: #0F5360;
     box-shadow: 0 6px 15px rgba(10, 10, 10, 0.342);
     color: white;

@@ -2,8 +2,22 @@ import React from 'react';
 import Cartedata from './Cartedata';
 import '../Style/Carte.css'
 
-function Carte() {
+function Carte({cours}) {
 
+  function formatDateHeure(date, date2) {
+    date = new Date(date);
+    date2 = new Date(date2);
+    var retour = date.toLocaleDateString() +" " + "Debut: " + date.getUTCHours() + "h" + "   Fin: "  + date2.getUTCHours() +"h";
+    return retour;
+}
+
+  let showCours = [];
+  for (let i = 0; i < cours.length; i++) {
+    showCours.push(<Cartedata img={cours[i].Auteur.infos.imageUser} matiere={cours[i].matieres.nom}
+                              nomAuteur={cours[i].Auteur.infos.nom + " " + cours[i].Auteur.infos.prenom}
+                              information={formatDateHeure(cours[i].dateDebut, cours[i].dateFin)}
+                              src={cours[i].matieres.image}/>)
+}
     return (
       <div className='cards' >
         
@@ -12,45 +26,7 @@ function Carte() {
         <div className='cards__container'>
           <div className='cards__wrapper'>
             <ul className='cards__items'>
-              <Cartedata
-                src={require('../assets/inscription.jpg')}
-                img={require('../assets/prof1.jpg')}
-                nomAuteur='Frédéric Pi'
-                information='Mardi 15 janvier 2022 - 16h'
-                matiere='Mathématique'
-                place='1/5'
-                path='/'
-              />
-        
-              <Cartedata
-                src={require('../assets/inscription.jpg')}
-                img={require('../assets/prof2.jpeg')}
-                nomAuteur='Marine marechal'
-                information='Mercredi 16 janvier 2022 - 14h'
-                matiere='Français'
-                place='3/5'
-                path='/'
-              />
-            </ul>
-            <ul className='cards__items'>
-              <Cartedata
-                src={require('../assets/inscription.jpg')}
-                img={require('../assets/prof3.jpg')}
-                nomAuteur='Albert Bibot'
-                information='Jeudi 1 janvier 2022 - 15h'
-                matiere='Histoire'
-                place='2/5'
-                path='/'
-              />
-             <Cartedata
-                src={require('../assets/inscription.jpg')}
-                img={require('../assets/prof4.jpg')}
-                nomAuteur='Richard Lords'
-                information='Vendredi 18 janvier 2022 - 14h30'
-                matiere='Anglais'
-                place='4/5'
-                path='/'
-              />
+              {showCours}
             </ul>
           </div>
         </div>

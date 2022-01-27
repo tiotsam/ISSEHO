@@ -17,12 +17,15 @@ function Footer() {
         </p>
         <Popup trigger={<button className='trigger_footer'> c'est ici </button>} position="top center">
           <div className='popup_footer'>
+            <div className='top_popup_img'>
+
+            </div>
             <div className='wrapper_popup'>
             <div className='container_popup'>
-              <h5 className='popup_H5'>Adress email</h5>
-              <input className='input_area' placeholder='votre adress-email'></input>
+              <h5 className='popup_H5'>Adresse email</h5>
+              <input className='input_popup' placeholder='votre adresse-email'></input>
               <h5 className='popup_H5'>Objet</h5>
-              <input placeholder='votre sujet'></input>
+              <input className='input_popup' placeholder='votre sujet'></input>
               <h5 className='popup_H5'>Message</h5>
               <textarea className='area_popup'  placeholder='votre message' ></textarea>
               <button className='button_popup'>Envoyer</button>
