@@ -69,11 +69,13 @@ class Infos
      * @ORM\OneToOne(targetEntity=user::class, mappedBy="infos")
      * @ORM\JoinColumn(nullable=false)
      */
+    #[Groups(['read_cour'])]
     private $user;
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="enfants")
      */
+    #[Groups(['read_cour'])]
     private $enfants;
 
     /**

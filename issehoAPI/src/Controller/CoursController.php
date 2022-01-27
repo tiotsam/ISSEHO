@@ -18,7 +18,7 @@ class CoursController extends AbstractController
         ]);
     }
 
-    #[Route('/cours/author/{authorId}', name: 'cours.list.Auteur')]
+    #[Route('/api/cours/author/{authorId}', name: 'cours.list.Auteur')]
     public function coursByAuthor(ManagerRegistry $doctrine, $authorId): Response
     {
         $repository = $doctrine->getRepository(Cours::class);
@@ -27,7 +27,7 @@ class CoursController extends AbstractController
     }
 
 
-    #[Route('/cours/countCours', name: 'cours.count')]
+    #[Route('/api/cours/countCours', name: 'cours.count')]
     public function getEnfantNumber(ManagerRegistry $doctrine): Response
     {
         $repository = $doctrine->getRepository(Cours::class);
@@ -35,7 +35,7 @@ class CoursController extends AbstractController
         return $this->json(['user'=> $cours]);
     }
 
-    #[Route('/cours/home', name: 'cours.list.4')]
+    #[Route('/api/cours/home', name: 'cours.list.4')]
     public function getLastFour(ManagerRegistry $doctrine): Response
     {
         $repository = $doctrine->getRepository(Cours::class);
