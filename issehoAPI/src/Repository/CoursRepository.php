@@ -22,6 +22,46 @@ class CoursRepository extends ServiceEntityRepository
     // /**
     //  * @return Cours[] Returns an array of Cours objects
     //  */
+    public function findByProfId($authorId)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.Auteur = :authorId')
+            ->setParameter('authorId', $authorId)
+            ->orderBy('c.dateDebut', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    // /**
+    //  * @return User[] Returns an array of User objects
+    //  */
+    public function countCours()
+    {
+        return $this->createQueryBuilder('c')
+            ->select('COUNT(c)')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+    // /**
+    //  * @return Cours[] Returns an array of Cours objects
+    //  */
+    public function findLastFour()
+    {
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.dateDebut', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    // /**
+    //  * @return Cours[] Returns an array of Cours objects
+    //  */
     /*
     public function findByExampleField($value)
     {
