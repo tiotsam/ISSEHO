@@ -5,6 +5,7 @@ import Modulec2 from '../Componente/cours/Modulec2'
 import Modulec3 from '../Componente/cours/Modulec3';
 import Cartedata from "../Componente/Cartedata";
 import CarteRecherche from "../Componente/CarteRecherche";
+import ReactPaginate from "react-paginate";
 
 
 

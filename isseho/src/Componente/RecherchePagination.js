@@ -1,30 +1,22 @@
-import React, {useEffect, useState} from 'react';
-import Cartedata from './Cartedata';
-import '../Style/Cours/CoursRecherche.css'
+import React, {useEffect, useState} from 'react'
 import ReactPaginate from "react-paginate";
 
-export default function CarteRecherche({cours}){
 
+function RecherchePagination(){
+
+    const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
     function Items({ currentItems }) {
         return (
             <>
                 {currentItems &&
                     currentItems.map((item) => (
-                        <Cartedata img={item.Auteur.infos.imageUser} matiere={item.matieres.nom}
-                                   nomAuteur={item.Auteur.infos.nom + " " + item.Auteur.infos.prenom}
-                                   information={formatDateHeure(item.dateDebut, item.dateFin)}
-                                   src={item.matieres.image}/>
+                        <div>
+                            <h3>Item #{item}</h3>
+                        </div>
                     ))}
             </>
         );
-    }
-
-    function formatDateHeure(date, date2) {
-        date = new Date(date);
-        date2 = new Date(date2);
-        var retour = date.toLocaleDateString() +" " + "Debut: " + date.getUTCHours() + "h" + "   Fin: "  + date2.getUTCHours() +"h";
-        return retour;
     }
 
     function PaginatedItems({ itemsPerPage }) {
@@ -39,13 +31,13 @@ export default function CarteRecherche({cours}){
             // Fetch items from another resources.
             const endOffset = itemOffset + itemsPerPage;
             console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-            setCurrentItems(cours.slice(itemOffset, endOffset));
-            setPageCount(Math.ceil(cours.length / itemsPerPage));
+            setCurrentItems(items.slice(itemOffset, endOffset));
+            setPageCount(Math.ceil(items.length / itemsPerPage));
         }, [itemOffset, itemsPerPage]);
 
         // Invoke when user click to request another page.
         const handlePageClick = (event) => {
-            const newOffset = (event.selected * itemsPerPage) % cours.length;
+            const newOffset = (event.selected * itemsPerPage) % items.length;
             console.log(
                 `User requested page number ${event.selected}, which is offset ${newOffset}`
             );
@@ -54,7 +46,7 @@ export default function CarteRecherche({cours}){
 
         return (
             <>
-                <Items currentItems={currentItems}/>
+                <Items currentItems={currentItems} />
                 <ReactPaginate
                     breakLabel="..."
                     nextLabel="next >"
@@ -68,15 +60,5 @@ export default function CarteRecherche({cours}){
         );
     }
 
-    return(
-    <div className='cards__container__recherche' >
-        <div className='cards__container'>
-            <div className='cards__wrapper'>
-                <div className='coursGrid'>
-                    <PaginatedItems itemsPerPage={6}/>
-                </div>
-            </div>
-        </div>
-    </div>
-    );
+
 }
