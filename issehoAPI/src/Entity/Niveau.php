@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Cours;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\NiveauRepository;
 use Doctrine\Common\Collections\ArrayCollection;
