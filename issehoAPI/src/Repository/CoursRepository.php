@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Cours;
+use App\Entity\Infos;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -31,6 +33,35 @@ class CoursRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    // /**
+    //  * @return Cours[] Returns an array of Cours objects
+    //  */
+    public function findByProfName($authorName)
+    {
+        $infos = new Infos;
+        $infos = $this->findBy(array('nom'=>$authorName));
+        $auteur = new User;
+        $auteur = $this->findBy(array('id'=>$infos->getId()));
+        $cours = new Cours;
+        $cours = $this->findBy(array('Auteur'=>$auteur));
+
+        return $cours;
+        // return $this->createQueryBuilder('c')
+        //     ->select('c')
+        //     ->leftJoin(
+        //         'App\Entity\Infos',
+        //         'i',
+        //         'WITH',
+        //         'i.nom LIKE %:authorName% OR i.prenom LIKE %:authorName%'
+        //     )
+        //     ->andWhere('c.Auteur = :authorName')
+        //     ->setParameter('authorName', $authorName)
+        //     ->orderBy('c.dateDebut', 'ASC')
+        //     ->getQuery()
+        //     ->getResult()
+        // ;
     }
 
     // /**

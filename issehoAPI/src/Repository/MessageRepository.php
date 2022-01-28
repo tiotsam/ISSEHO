@@ -22,6 +22,30 @@ class MessageRepository extends ServiceEntityRepository
     // /**
     //  * @return Message[] Returns an array of Message objects
     //  */
+    public function findByUserId($userId)
+    {
+        $message = new Message;
+        $messages = new Message;
+
+        $message = $this->findBy(array('Auteur'=>$userId));
+        $messages =  $this->findAll();
+
+        foreach ($messages as $key => $msg) {
+            $dests = $msg->getDestinataire();
+
+            foreach ($dests as $key => $dest) {
+                if($dest->getId() == $userId){
+                    array_push($message, $msg);
+                }
+            }
+        }
+        
+        return $message;
+    }
+
+    // /**
+    //  * @return Message[] Returns an array of Message objects
+    //  */
     /*
     public function findByExampleField($value)
     {
