@@ -12,8 +12,10 @@ import ReactPaginate from "react-paginate";
 export default function Cours() {
 
     const [cours, setCours] = useState("");
+    const [matieres, setMatieres] = useState("");
     const [isLoaded, setisLoaded] = useState(false);
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const [isLoadedChoix, setisLoadedChoix] = useState(false);
+    const [niveaux, setNiveaux] = useState("");
 
     function formatDateHeure(date, date2) {
         date = new Date(date);
@@ -36,12 +38,21 @@ export default function Cours() {
         }
 
         const respCours = await fetch(process.env.REACT_APP_URL + '/cours', coursGet);
-
+        const respMatieres = await fetch(process.env.REACT_APP_URL + '/matieres', coursGet);
+        const respNiveaux = await fetch(process.env.REACT_APP_URL + '/niveaux', coursGet);
 
         if (respCours.status === 200) {
             console.log("YOYO");
             setCours(await respCours.json());
             setisLoaded(true);
+        }
+
+        if (respMatieres.status === 200 && respNiveaux.status === 200) {
+            console.log("OYOY");
+            setMatieres(await respMatieres.json());
+            setNiveaux(await respNiveaux.json());
+            console.log(matieres);
+            setisLoadedChoix(true);
         }
     }
     return getCours();
@@ -52,7 +63,9 @@ export default function Cours() {
             <>
                 <HeaderCours/>
                 <Modulec1/>
-                <Modulec2/>
+                { !isLoadedChoix && <p className='chargement'> Loading......</p> }
+                { isLoadedChoix && <Modulec2 matieres={matieres} niveaux={niveaux}/>}
+
                 { !isLoaded && <p className='chargement'>Loading.....</p>}
 
                 { isLoaded && <CarteRecherche cours={cours}/>
