@@ -21,6 +21,7 @@ function Footer() {
 
             </div>
             <div className='wrapper_popup'>
+            <img className='top_popup_img' src={require("../assets/inscription.jpg")}/>
             <div className='container_popup'>
               <h5 className='popup_H5'>Adresse email</h5>
               <input className='input_popup' placeholder='votre adresse-email'></input>

@@ -10,3 +10,9 @@
     font-size: 6rem;
     font-weight: 600;
 }
+.container_load{
+    padding: 4rem;
+    background-image: url(../assets/index.jpeg);
+    background-size: cover;
+    margin-bottom: -1.4rem;
+}
