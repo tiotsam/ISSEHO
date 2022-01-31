@@ -44,10 +44,15 @@
     width: 90%;
     margin: 0 auto;
   }
+
+.cards__container__recherche {
+  background-image: url("../assets/index.jpeg");
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
   
   .cards__wrapper {
     position: relative;
-    margin: 50px 0 45px;
   }
   
   .cards__items {
