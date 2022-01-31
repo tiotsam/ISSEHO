@@ -45,6 +45,7 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
             $dateinscription = new \DateTime('12/' . random_int(1, 28) . '/2020');
             $info->setNom($nom[random_int(0, sizeof($nom) - 1)])
                 ->setPrenom($prenom[random_int(0, sizeof($prenom) - 1)])
+                ->setTel('0'.random_int(0 , 9).'.'.random_int(0 , 9).random_int(0 , 9).'.'.random_int(0 , 9).random_int(0 , 9).'.'.random_int(0 , 9).random_int(0 , 9).'.'.random_int(0 , 9).random_int(0 , 9))
                 ->setDepartement(random_int(1, 95))
                 ->setVille($ville[random_int(0, sizeof($ville) - 1)])
                 ->setRue(random_int(1,300).' '.$typeRue[random_int(0,sizeof($typeRue) - 1)].' '.$nomRue[random_int(0,sizeof($nomRue)-1)])
@@ -72,6 +73,7 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
             $dateinscription = new \DateTime('12/' . random_int(1, 28) . '/2020');
             $info->setNom($nom[random_int(0, sizeof($nom) - 1)])
                 ->setPrenom($prenom[random_int(0, sizeof($prenom) - 1)])
+                ->setTel('0'.random_int(0 , 9).'.'.random_int(0 , 9).random_int(0 , 9).'.'.random_int(0 , 9).random_int(0 , 9).'.'.random_int(0 , 9).random_int(0 , 9).'.'.random_int(0 , 9).random_int(0 , 9))
                 ->setDepartement(random_int(1, 95))
                 ->setVille($ville[random_int(0, sizeof($ville) - 1)])
                 ->setRue(random_int(1,300).' '.$typeRue[random_int(0,sizeof($typeRue) - 1)].' '.$nomRue[random_int(0,sizeof($nomRue)-1)])
@@ -102,6 +104,7 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
             $dateinscription = new \DateTime('12/' . random_int(1, 28) . '/2020');
             $info->setNom($nom[random_int(0, sizeof($nom) - 1)])
                 ->setPrenom($prenom[random_int(0, sizeof($prenom) - 1)])
+                ->setTel('0'.random_int(0 , 9).'.'.random_int(0 , 9).random_int(0 , 9).'.'.random_int(0 , 9).random_int(0 , 9).'.'.random_int(0 , 9).random_int(0 , 9).'.'.random_int(0 , 9).random_int(0 , 9))
                 ->setDepartement(random_int(1, 95))
                 ->setVille($ville[random_int(0, sizeof($ville) - 1)])
                 ->setRue(random_int(1,300).' '.$typeRue[random_int(0,sizeof($typeRue) - 1)].' '.$nomRue[random_int(0,sizeof($nomRue)-1)])

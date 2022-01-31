@@ -76,6 +76,11 @@ class Cours
      */
     private $mailAutos;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $maxParticipants;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -197,6 +202,18 @@ class Cours
                 $mailAuto->setCours(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMaxParticipants(): ?int
+    {
+        return $this->maxParticipants;
+    }
+
+    public function setMaxParticipants(int $maxParticipants): self
+    {
+        $this->maxParticipants = $maxParticipants;
 
         return $this;
     }

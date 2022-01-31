@@ -34,6 +34,7 @@ export default function Inscription({setisAuthenticated}) {
         let roleUser = e.target.typeUser.value == 'Professeur' ? 'prof' : 'parent';
         let mail = e.target.mail.value;
         let pass = e.target.pass.value;
+        let tel = e.target.tel.value;
         let confPass = e.target.confPass.value;
         let nom = e.target.nom.value;
         let prenom = e.target.prenom.value;
@@ -93,6 +94,7 @@ export default function Inscription({setisAuthenticated}) {
                     nom: nom,
                     password: pass,
                     role: roleUser,
+                    tel : tel,
                     rue: rue,
                     departement: departement,
                     ville: ville,
@@ -190,9 +192,15 @@ export default function Inscription({setisAuthenticated}) {
 
                         </div>
 
-                        <div className='form-champ'>
-                            <label className='form-label'>Adresse mail :</label>
-                            <input className='form-input' type='text' name='mail' id='mail' required placeholder='Veuillez renseigner votre adresse mail' />
+                        <div className='form-champ-double'>
+                            <div className='form-sschamp-double'>
+                                <label className='form-label'>Adresse mail :</label>
+                                <input className='form-input' type='text' name='mail' id='mail' required placeholder='Veuillez renseigner votre adresse mail' />
+                            </div>
+                            <div className='form-sschamp-double'>
+                                <label className='form-label'>Tel :</label>
+                                <input className='form-input' type='text' name='tel' id='tel' required placeholder='Veuillez renseigner votre numéro de téléphone' />
+                            </div>
                         </div>
 
                         <div className='form-champ'>

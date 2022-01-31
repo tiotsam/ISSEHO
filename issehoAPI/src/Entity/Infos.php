@@ -84,6 +84,11 @@ class Infos
     #[Groups(['read_user'])]
     private $rue;
 
+    /**
+     * @ORM\Column(type="string", length=14)
+     */
+    private $tel;
+
     public function __construct()
     {
         $this->enfants = new ArrayCollection();
@@ -228,6 +233,18 @@ class Infos
     public function setRue(string $rue): self
     {
         $this->rue = $rue;
+
+        return $this;
+    }
+
+    public function getTel(): ?string
+    {
+        return $this->tel;
+    }
+
+    public function setTel(string $tel): self
+    {
+        $this->tel = $tel;
 
         return $this;
     }
