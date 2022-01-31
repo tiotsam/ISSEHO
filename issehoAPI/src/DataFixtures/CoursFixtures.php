@@ -37,6 +37,7 @@ class CoursFixtures extends Fixture implements DependentFixtureInterface
             $mat = new Matieres;
             $level = new Niveau;
             $auteur = new User;
+            $maxParticipants = random_int(1,5);
         
             $mat = $this->matieresRepository->findOneBy(array('nom'=>$matières[random_int(0,sizeof($matières)-1)]));
             $level = $this->niveauRepository->findOneBy(array('nom'=>$niveaux[random_int(0,sizeof($niveaux)-1)]));
@@ -47,8 +48,9 @@ class CoursFixtures extends Fixture implements DependentFixtureInterface
             ->setDateFin($dateD->add(new DateInterval('PT2H')))
             ->setAuteur($auteur)
             ->setMatieres($mat)
+            ->setMaxParticipants($maxParticipants)
             ->setNiveau($level);
-            for ($j=0; $j < random_int(1,5); $j++) {
+            for ($j=0; $j < random_int(1,$maxParticipants); $j++) {
                 $eleve = new User;
                 $eleve = $this->userRepository->findOneBy(array('email'=>'enfant'.random_int(0,9).'@gmail.com'));
                 $cour->addParticipant($eleve);

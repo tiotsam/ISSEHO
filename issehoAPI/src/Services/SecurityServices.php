@@ -19,7 +19,7 @@ class SecurityServices {
         $this->userRep = $userRep;
     }
 
-    public function register( $email , $prenom , $nom , $pass , $role , $rue , $departement , $ville , $birthdate , $dateInscription , $img = NULL , $parent = NULL)
+    public function register( $email , $prenom , $nom , $pass , $role , $tel , $rue , $departement , $ville , $birthdate , $dateInscription , $img = NULL , $parent = NULL)
     {
 
         $user = new User;
@@ -46,6 +46,25 @@ class SecurityServices {
 
         if(empty($role)){
             throw new Exception("Le rôle doit être renseigné");
+        }
+
+        if(empty($tel)){
+            throw new Exception("Le numéro de téléphone doit être renseigné");
+        }else{
+            if(strlen($tel) !== 14){
+                throw new Exception("Numéro de téléphone non valide");
+            }else{
+                for ($i=0; $i < strlen($tel) ; $i++) { 
+                    if( $i !== 2 && $i !== 5 && $i !== 8 && $i !== 11 ){
+
+                        if(!is_numeric($tel[$i])){
+                            throw new Exception("Numéro de téléphone non valide, le caractère ".$tel[$i]." à i = ".$i." n'est pas un entier");
+                        }
+                    }else{
+                        $tel[$i] = '.';
+                    }
+                }
+            }
         }
 
 
@@ -132,6 +151,7 @@ class SecurityServices {
 
                 $info->setPrenom($prenom)
                 ->setNom($nom)
+                ->setTel($tel)
                 ->setDepartement($departement)
                 ->setRue($rue)
                 ->setVille($ville)

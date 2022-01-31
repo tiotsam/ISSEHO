@@ -18,7 +18,7 @@ class UsersController extends AbstractController
         ]);
     }
 
-    #[Route('/api/users/children/{idParent}', name: 'users.list.Auteur')]
+    #[Route('/users/children/{idParent}', name: 'users.list.Auteur')]
     public function coursByAuthor(ManagerRegistry $doctrine, $idParent): Response
     {
         $repository = $doctrine->getRepository(User::class);
@@ -26,7 +26,7 @@ class UsersController extends AbstractController
         return $this->json(['users'=> $users]);
     }
 
-    #[Route('/api/users/prof', name: 'users.list.prof')]
+    #[Route('/users/prof', name: 'users.list.prof')]
     public function getProf(ManagerRegistry $doctrine): Response
     {
         $repository = $doctrine->getRepository(User::class);
@@ -34,7 +34,7 @@ class UsersController extends AbstractController
         return $this->json(['user'=> $users]);
     }
 
-    #[Route('/api/users/countProf', name: 'users.count.prof')]
+    #[Route('/users/countProf', name: 'users.count.prof')]
     public function getProfNumber(ManagerRegistry $doctrine): Response
     {
         $repository = $doctrine->getRepository(User::class);
@@ -42,7 +42,7 @@ class UsersController extends AbstractController
         return $this->json(['user'=> $users]);
     }
 
-    #[Route('/api/users/parent', name: 'users.list.parent')]
+    #[Route('/users/parent', name: 'users.list.parent')]
     public function getParent(ManagerRegistry $doctrine): Response
     {
         $repository = $doctrine->getRepository(User::class);
@@ -50,7 +50,7 @@ class UsersController extends AbstractController
         return $this->json(['user'=> $users]);
     }
 
-    #[Route('/api/users/countParent', name: 'users.count.parent')]
+    #[Route('/users/countParent', name: 'users.count.parent')]
     public function getParentNumber(ManagerRegistry $doctrine): Response
     {
         $repository = $doctrine->getRepository(User::class);
@@ -58,7 +58,7 @@ class UsersController extends AbstractController
         return $this->json(['user'=> $users]);
     }
 
-    #[Route('/api/users/enfant', name: 'users.list.enfant')]
+    #[Route('/users/enfant', name: 'users.list.enfant')]
     public function getEnfant(ManagerRegistry $doctrine): Response
     {
         $repository = $doctrine->getRepository(User::class);
@@ -66,7 +66,7 @@ class UsersController extends AbstractController
         return $this->json(['user'=> $users]);
     }
 
-    #[Route('/api/users/countEnfant', name: 'users.count.enfant')]
+    #[Route('/users/countEnfant', name: 'users.count.enfant')]
     public function getEnfantNumber(ManagerRegistry $doctrine): Response
     {
         $repository = $doctrine->getRepository(User::class);
