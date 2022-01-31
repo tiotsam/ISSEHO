@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Cartedata from './Cartedata';
 import '../Style/Cours/CoursRecherche.css'
 import ReactPaginate from "react-paginate";
+import '../Style/Cours/Pagination.css'
 
-export default function CarteRecherche({cours}){
+export default function CarteRecherche({ cours }) {
 
 
     function Items({ currentItems }) {
@@ -12,9 +13,9 @@ export default function CarteRecherche({cours}){
                 {currentItems &&
                     currentItems.map((item) => (
                         <Cartedata img={item.Auteur.infos.imageUser} matiere={item.matieres.nom}
-                                   nomAuteur={item.Auteur.infos.nom + " " + item.Auteur.infos.prenom}
-                                   information={formatDateHeure(item.dateDebut, item.dateFin)}
-                                   src={item.matieres.image}/>
+                            nomAuteur={item.Auteur.infos.nom + " " + item.Auteur.infos.prenom}
+                            information={formatDateHeure(item.dateDebut, item.dateFin)}
+                            src={item.matieres.image} />
                     ))}
             </>
         );
@@ -23,7 +24,7 @@ export default function CarteRecherche({cours}){
     function formatDateHeure(date, date2) {
         date = new Date(date);
         date2 = new Date(date2);
-        var retour = date.toLocaleDateString() +" " + "Debut: " + date.getUTCHours() + "h" + "   Fin: "  + date2.getUTCHours() +"h";
+        var retour = date.toLocaleDateString() + " " + "Debut: " + date.getUTCHours() + "h" + "   Fin: " + date2.getUTCHours() + "h";
         return retour;
     }
 
@@ -53,30 +54,34 @@ export default function CarteRecherche({cours}){
         };
 
         return (
-            <>
-                <Items currentItems={currentItems}/>
-                <ReactPaginate
-                    breakLabel="..."
-                    nextLabel="next >"
-                    onPageChange={handlePageClick}
-                    pageRangeDisplayed={5}
-                    pageCount={pageCount}
-                    previousLabel="< previous"
-                    renderOnZeroPageCount={null}
-                />
-            </>
+            <div className='wrapper_paginate'>
+                
+                <Items currentItems={currentItems} />
+                <div className='page_page'>
+                    <ReactPaginate
+                        breakLabel="..."
+                        nextLabel="next >"
+                        onPageChange={handlePageClick}
+                        pageRangeDisplayed={5}
+                        pageCount={pageCount}
+                        previousLabel="< previous"
+                        renderOnZeroPageCount={null}
+                    />
+                </div>
+            </div>
         );
     }
 
-    return(
-    <div className='cards__container__recherche' >
-        <div className='cards__container'>
-            <div className='cards__wrapper'>
-                <div className='coursGrid'>
-                    <PaginatedItems itemsPerPage={6}/>
+    return (
+        <div className='cards__container__recherche' >
+            <div className='cards__container'>
+                <div className='cards__wrapper'>
+                    <div className='coursGrid'>
+                        <PaginatedItems itemsPerPage={6} />
+                    </div>
                 </div>
             </div>
+
         </div>
-    </div>
     );
 }

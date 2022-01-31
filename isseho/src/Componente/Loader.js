@@ -25,7 +25,9 @@ function Loader() {
 
     return (
 
-        <div className='containerload' ref={(containerload)} ></div>
+        <div className='containerload' ref={(containerload)} >
+            <h2 className='text_loading'>Loading...</h2>
+        </div>
     );
 }
 
