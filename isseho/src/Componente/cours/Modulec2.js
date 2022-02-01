@@ -1,25 +1,73 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import '../../Style/Cours/Modulec2.css'
 
-function Modulec2({matieres, niveaux }) {
+function Modulec2({matieres, niveaux, cours, setCoursFiltre ,coursFiltre}) {
     console.log(matieres);
 
-    let filtrer;
+    useEffect(() => {
+        setCoursFiltre(cours);
+    },[]);
 
-    /*function Filtre(cours){
-        if(document.getElementById('list').value !== "all"){
+    console.log(coursFiltre);
+
+    let filtrerMatieres = [];
+    let filtrerNiveaux = [];
+    let filtrerResult = [];
+
+    function Compare(filtreM, filtreN){
+        for (let i = 0; i < filtreM.length; i++) {
+            for (let j = 0; j < filtreN.length; j++) {
+                if(filtreM[i] === filtreN[j]){
+                    filtrerResult.push(filtreN[j]);
+                }
+            }
+        }
+        return filtrerResult;
+    }
+
+    function Filtre(){
+        console.log("COUCOU");
+        if(document.getElementById('listMatiere').value !== "all"){
             cours.map((cour) => {
-                if (document.getElementById('list').value === cour.matieres.nom) {
+                if (document.getElementById('listMatiere').value === cour.matieres.nom) {
 
-                    filtrer.push(cour);
+                    filtrerMatieres.push(cour);
                 }
             })
-            setCoursFiltre(filtrer);
+            console.log("MATIERES");
+            console.log(filtrerMatieres);
+        }
+
+        if(document.getElementById('listNiveaux').value !== "all"){
+            cours.map((cour) => {
+                if (document.getElementById('listNiveaux').value === cour.niveau.nom) {
+
+                    filtrerNiveaux.push(cour);
+                }
+            })
+            console.log("NIVEAUX");
+            console.log(filtrerNiveaux);
+        }
+
+        if(filtrerMatieres.length === 0 && filtrerNiveaux.length === 0){
+            console.log("ABRA");
+            setCoursFiltre(cours);
+        }
+        else if(filtrerMatieres.length !== 0 && filtrerNiveaux.length === 0){
+            console.log("CADABRA");
+            setCoursFiltre(filtrerMatieres);
+            console.log(coursFiltre);
+        }
+        else if(filtrerMatieres.length === 0 && filtrerNiveaux.length !== 0){
+            console.log("FETUS");
+            setCoursFiltre(filtrerNiveaux);
+            console.log(coursFiltre);
         }
         else{
-            setCoursFiltre(cours)
+            console.log("DELETUS");
+            setCoursFiltre(Compare(filtrerMatieres,filtrerNiveaux));
         }
-    }*/
+    }
 
     function TOTO(){
         console.log("TOTO" + document.getElementById('list').value);
@@ -31,7 +79,7 @@ function Modulec2({matieres, niveaux }) {
             <div className='input_m'>
                 <div className="label_input">
                 <label className="label_m">Matière</label>
-                <select id='list' className="select_m" onChange={TOTO}>
+                <select id='listMatiere' className="select_m" onChange={Filtre} defaultValue="all">
                     <option value="all">Filtrer par matière</option>
                     {matieres.map((matiere) => (
                         <option value = {matiere.nom}>{matiere.nom}</option>
@@ -41,7 +89,7 @@ function Modulec2({matieres, niveaux }) {
                 
                 <div className="label_input">
                 <label className="label_m" >Niveau</label>
-                <select className="select_m">
+                <select id='listNiveaux' className="select_m" onChange={Filtre} defaultValue="all">
                     <option value="all">Filtrer par niveaux</option>
                     {niveaux.map((niveau) => (
                             <option value = {niveau.nom}>{niveau.nom}</option>
