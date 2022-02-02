@@ -8,14 +8,24 @@ export default function MonCpt() {
 
   const [user, setUser] = useState('');
   const [isLoaded, setisLoaded] = useState(false);
+  const [isLoadedMsg, setisLoadedMsg] = useState(false);
   const [messages, setMessages] = useState([]);
 
   const layout = [
-    { i: "1", x: 0, y: 0, w: 2.5, h: 15 , minW: 2.5 , minH: 15 , maxW: 2.5 , maxH: 15},
+    { i: "1", x: 0, y: 0, w: 2.5, h: 15, minW: 2.5, minH: 15, maxW: 2.5, maxH: 15 },
     { i: "2", x: 2.6, y: 0, w: 9.2, h: 8 },
     { i: "3", x: 2.6, y: 9, w: 9.2, h: 7 },
     { i: "4", x: 0, y: 15, w: 2, h: 5.5 }
   ];
+
+  let opt = {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    },
+  }
 
 
   useEffect(() => {
@@ -25,16 +35,8 @@ export default function MonCpt() {
       // On récupère l'id du user connecté
       let userId = JSON.parse(localStorage.getItem('user')).id;
 
-      let opt = {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + localStorage.getItem('token')
-        },
-      }
-
       const respUser = await fetch(process.env.REACT_APP_URL + '/users/' + userId, opt);
+
 
       if (respUser.status === 200) {
 
@@ -46,33 +48,50 @@ export default function MonCpt() {
         retourUser.infos.birthDate = dateFormat;
 
         setUser(retourUser);
-        console.log(user);
         setisLoaded(true);
-        setMessages(afficheMessages(user.messages));
       }
 
-    } 
+    }
+
+    const getMsg = async()=>{
+
+      console.log(user);
+      // console.log(process.env.REACT_APP_URL_CUSTO + 'messages/user/' + user.id);
+      // const respMail = await fetch(process.env.REACT_APP_URL_CUSTO + 'messages/user/' + user.id + userId, opt);
+      // if (respMail === 200) {
+      //   setMessages(await respMail.json().messages);
+      //   console.log('coucou');
+      //   console.log(messages);
+      //   setisLoadedMsg(true);
+    }
 
     return getUser();
   }, []);
 
-  const afficheMessages = (messages)=>{
-    console.log('longueur tabMsg : '+ messages.length);
+
+
+  
+
+  const afficheMessages = (messages) => {
+    console.log('coucou');
+    console.log(messages);
+
     let afficheMsg = []
-    if(messages.length === 0){
+
+    if (messages.length === 0) {
       afficheMsg.push(
         <div>Vous n'avez pas de messages</div>
       )
-    }else{
-      if(messages.length === 1){
+    } else {
+      if (messages.length === 1) {
         afficheMsg.push(
           <Mail objet={user.messages[0].objet} contenu={user.messages[0].contenu} dateEnvoi={user.messages[0].dateEnvoi} />
-        ) 
-      }else{
+        )
+      } else {
         messages.forEach(message => {
-         afficheMsg.push(
+          afficheMsg.push(
             <Mail objet={message.objet} contenu={message.contenu} dateEnvoi={message.dateEnvoi} />
-          ) 
+          )
         });
       }
     }
@@ -80,36 +99,36 @@ export default function MonCpt() {
     return afficheMsg;
   }
 
-  console.log(user.messages);
+  isLoaded ? console.log(user) : console.log('Chargement...');
+  isLoadedMsg ? console.log(messages) : console.log('Chargement messages ...');
 
-  if (!isLoaded) {
-    return <div className='pageMonCpt'><div className='topBar' /><p className='chargement'>Loading.....</p></div>
-  } else {
     return (
       <div className='pageMonCpt'>
-        <div className='topBar'/>
-          <div className='containerCptBoard'>
-            <GridLayout
-              className="layout"
-              layout={layout}
-              cols={12}
-              rowHeight={30}
-              width={1920}
-            >
-              <div key="1" className='ficheUser'>
-                <FichePerso nom={user.infos.nom} prenom={user.infos.prenom} mail={user.email} adrs={user.infos.rue} dpt={user.infos.departement} ville={user.infos.ville} birthdate={user.infos.birthDate} role={user.roles[1]} />
-              </div>
+        <div className='topBar' />
+        <div className='containerCptBoard'>
+          <GridLayout
+            className="layout"
+            layout={layout}
+            cols={12}
+            rowHeight={30}
+            width={1920}
+          >
+            <div key="1" className='ficheUser'>
+              {isLoaded && <FichePerso nom={user.infos.nom} prenom={user.infos.prenom} mail={user.email} tel={user.infos.tel} adrs={user.infos.rue} dpt={user.infos.departement} ville={user.infos.ville} birthdate={user.infos.birthDate} role={user.roles[1]} />}
+              {!isLoaded && <p className='chargement'>Loading.....</p>}
+            </div>
 
-              <div className='carte' key="2">Calendrier</div>
-              <div key="3" className='messagerie'>
-              <img className='topImg' src={require("../assets/mail.jpg")}/>
-                {messages}
-              </div>
-              <div className='carte' key="4">Enfants</div>
-            </GridLayout>
-          
-          </div>
+            <div className='carte' key="2">Calendrier</div>
+            <div key="3" className='messagerie'>
+              <img className='topImg' src={require("../assets/mail.jpg")} />
+              {isLoadedMsg && afficheMessages(messages)}
+              {!isLoadedMsg && <p>Loading...</p>}
+            </div>
+            <div className='carte' key="4">Enfants</div>
+          </GridLayout>
+
+        </div>
       </div>
     )
-  }
+  
 }

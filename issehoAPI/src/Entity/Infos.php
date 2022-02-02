@@ -87,6 +87,7 @@ class Infos
     /**
      * @ORM\Column(type="string", length=14)
      */
+    #[Groups(['read_user'])]
     private $tel;
 
     public function __construct()

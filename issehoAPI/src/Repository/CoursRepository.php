@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Cours;
 use App\Entity\Infos;
-use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,9 +15,10 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CoursRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry , InfosRepository $infosRepository)
     {
         parent::__construct($registry, Cours::class);
+        $this->infosRepository = $infosRepository;
     }
 
     // /**
@@ -31,8 +31,7 @@ class CoursRepository extends ServiceEntityRepository
             ->setParameter('authorId', $authorId)
             ->orderBy('c.dateDebut', 'ASC')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
     // /**
@@ -40,7 +39,7 @@ class CoursRepository extends ServiceEntityRepository
     //  */
     public function findByProfName($authorName)
     {
- 
+
         return $this->createQueryBuilder('c')
             ->select('c')
             ->leftJoin(
@@ -53,8 +52,7 @@ class CoursRepository extends ServiceEntityRepository
             ->setParameter('authorName', $authorName)
             ->orderBy('c.dateDebut', 'ASC')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
     // /**
@@ -65,8 +63,7 @@ class CoursRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('c')
             ->select('COUNT(c)')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
 
@@ -75,12 +72,26 @@ class CoursRepository extends ServiceEntityRepository
     //  */
     public function findLastFour()
     {
-        return $this->createQueryBuilder('c')
+        $cours = new Cours;
+        $cours = $this->createQueryBuilder('c')
             ->orderBy('c.dateDebut', 'DESC')
-            ->setMaxResults(10)
+            ->setMaxResults(4)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
+        
+        // foreach ($cours as $key => $cour) {
+        //     $auteur = $cour->getAuteur()->getId();
+        //     $info = new Infos;
+        //     $info = $this->infosRepository->findOneBy(array('id'=>$auteur));
+        //     $userInfo =array('infos' => array(
+        //                 'nom'=> $info->getNom(),
+        //                 'prenom'=> $info->getPrenom(),
+        //                 'img'=> $info->getImageUser()));
+        //     $cour->setAuteurInfos($userInfo);
+        //     // array_push( $cour['Auteur'], $userInfo);
+        // }
+
+        return $cours;
     }
 
     // /**

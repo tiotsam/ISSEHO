@@ -4,6 +4,8 @@ import '../Style/Carte.css'
 
 function Carte({cours}) {
 
+  console.log(cours);
+  console.log(cours.cours.length);
   function formatDateHeure(date, date2) {
     date = new Date(date);
     date2 = new Date(date2);
@@ -12,12 +14,15 @@ function Carte({cours}) {
 }
 
   let showCours = [];
-  for (let i = 0; i < cours.length; i++) {
-    showCours.push(<Cartedata img={cours[i].Auteur.infos.imageUser} matiere={cours[i].matieres.nom}
-                              nomAuteur={cours[i].Auteur.infos.nom + " " + cours[i].Auteur.infos.prenom}
-                              information={formatDateHeure(cours[i].dateDebut, cours[i].dateFin)}
-                              src={cours[i].matieres.image}/>)
-}
+
+  cours.forEach(cour => {
+    showCours.push(<Cartedata img={cour.Auteur.infos.imageUser} matiere={cour.matieres.nom}
+                              nomAuteur={cour.Auteur.infos.nom + " " + cour.Auteur.infos.prenom}
+                              information={formatDateHeure(cour.dateDebut, cour.dateFin)}
+                              src={cour.matieres.image}/>)
+  });
+  
+console.log(showCours);
     return (
       <div className='cards' >
         

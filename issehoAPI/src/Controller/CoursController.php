@@ -3,13 +3,29 @@
 namespace App\Controller;
 
 use App\Entity\Cours;
-use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\CoursRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[AsController]
 class CoursController extends AbstractController
 {
+
+    public function __construct(CoursRepository $coursRepository)
+    {
+        $this->coursRepository = $coursRepository;
+    }
+
+    public function __invoke(Cours $data): Response
+    {
+        $data = new Cours;
+        $data = $this->getLastFour();
+
+        return $data;
+    }
+
     #[Route('/cours', name: 'cours')]
     public function index(): Response
     {
@@ -19,36 +35,43 @@ class CoursController extends AbstractController
     }
 
     #[Route('/cours/author/{authorId}', name: 'cours.list.Auteur')]
-    public function coursByAuthor(ManagerRegistry $doctrine, $authorId): Response
+    public function coursByAuthorId( $authorId): Response
     {
-        $repository = $doctrine->getRepository(Cours::class);
-        $cours = $repository->findByProfId($authorId);
-        return $this->json(['cours'=> $cours]);
+        $cours = new Cours;
+        $cours = $this->coursRepository->findByProfId($authorId);
+        $cours = $this->json(['cours'=> $cours]);
+        return $cours;
     }
 
     #[Route('/cours/author/{authorName}', name: 'cours.list.nomAuteur')]
-    public function coursByAuthorName(ManagerRegistry $doctrine, $authorName): Response
+    public function coursByAuthorName( $authorName): Response
     {
-        $repository = $doctrine->getRepository(Cours::class);
-        $cours = $repository->findByProfName($authorName);
-        return $this->json(['cours'=> $cours]);
+
+        $cours = new Cours;
+        $cours = $this->coursRepository->findByProfName($authorName);
+        $cours = $this->json(['cours'=> $cours]);
+        return $cours;
     }
 
 
     #[Route('/cours/countCours', name: 'cours.count')]
-    public function getEnfantNumber(ManagerRegistry $doctrine): Response
+    public function getEnfantNumber(): Response
     {
-        $repository = $doctrine->getRepository(Cours::class);
-        $cours = $repository->countCours();
-        return $this->json(['user'=> $cours]);
+        $cours = new Cours;
+        $cours = $this->coursRepository->countCours();
+        $cours = $this->json(['cours'=> $cours]);
+        return $cours;
     }
 
     #[Route('/cours/home', name: 'cours.list.4')]
-    public function getLastFour(ManagerRegistry $doctrine): Response
+    public function getLastFour(): Response
     {
-        $repository = $doctrine->getRepository(Cours::class);
-        $cours = $repository->findLastFour();
-        return $this->json(['user'=> $cours]);
+        $cours = new Cours;
+        $cours = $this->coursRepository->findLastFour();
+        $cours = $this->json(['cours'=> $cours]);
+        // $jsonContent = $serializer->serialize($cours, 'json');
+        
+        return $cours;
     }
 
 }

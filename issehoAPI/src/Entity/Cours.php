@@ -4,14 +4,17 @@ namespace App\Entity;
 
 use App\Entity\User;
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\CoursRepository;
+// use App\Controller\CoursController;
+use App\Controller\Get4LastCoursController;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+// @ORM\Entity(repositoryClass=CoursRepository::class)
+
 /**
- * @ORM\Entity(repositoryClass=CoursRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\CoursRepository")
  */
 #[ApiResource(
     normalizationContext: ['groups' => ['read_cours']],
@@ -20,6 +23,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
        'get'=> [
            'normalization_context' => ['groups' => ['read_cour']],
        ],
+       'getLastFour' => [
+        'method' => 'GET',
+        'path' => '/cours/home',
+        'controller' => Get4LastCoursController::class,
+        'pagination_enabled'=> false,
+        'filters'=>[],
+        'openapi_context'=>[
+            'summary' => 'Récupère les quatre derniers cours.',
+            'parameters' => [],
+        ],
+        ],
+
    ],
    )]
 class Cours
@@ -48,13 +63,13 @@ class Cours
      * @ORM\ManyToOne(targetEntity=user::class, inversedBy="cours")
      * @ORM\JoinColumn(nullable=false)
      */
-    #[Groups(['read_cours'])]
+    #[Groups(['read_cours','read_cour'])]
     private $Auteur;
 
     /**
      * @ORM\ManyToMany(targetEntity=user::class)
      */
-    #[Groups(['read_cours'])]
+    #[Groups(['read_cours','read_cour'])]
     private $participants;
 
     /**

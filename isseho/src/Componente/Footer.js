@@ -35,15 +35,15 @@ function Footer() {
           </div>
         </Popup>
       </section>
-      <div class='footer-links'>
+      <div className='footer-links'>
         <div className='footer-link-wrapper'>
-          <div class='footer-link-items'>
+          <div className='footer-link-items'>
             <h4>Qui somme nous ?</h4>
             <Link to='/'>Notre Société</Link>
             <Link to='/'>Notre Vision</Link>
 
           </div>
-          <div class='footer-link-items'>
+          <div className='footer-link-items'>
             <h4>Contact</h4>
             <Link to='/'>Email: Contact@isseho.com</Link>
             <Link to='/'>Tél: 01 58 95 65 20</Link>
@@ -54,16 +54,16 @@ function Footer() {
       <div className='container_footer-mediai'>
       </div>
 
-      <section class='social-media'>
-        <div class='social-media-wrap'>
-          <div class='footer-logo'>
+      <section className='social-media'>
+        <div className='social-media-wrap'>
+          <div className='footer-logo'>
           </div>
-          <small class='website-rights'>
+          <small className='website-rights'>
             <IoLogoFacebook />
             <IoLogoYoutube />
             <IoLogoInstagram />
           </small>
-          <div class='social-icons'>
+          <div className='social-icons'>
           </div>
         </div>
       </section>

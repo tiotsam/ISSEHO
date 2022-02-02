@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../Style/FichePerso.css'
 
-export default function FichePerso({nom,prenom,mail,adrs,dpt,ville,birthdate,role}) {
+export default function FichePerso({nom,prenom,mail,tel,adrs,dpt,ville,birthdate,role}) {
   const [error, seterror] = useState('');
 
   dpt = dpt.toString();
@@ -16,6 +16,7 @@ export default function FichePerso({nom,prenom,mail,adrs,dpt,ville,birthdate,rol
     //   On initialise les variables
       let roleUser = e.target.typeUser.value == 'Professeur' ? 'prof' : 'parent';
       let mail = e.target.mail.value;
+      let tel = e.target.mail.value;
       let pass = e.target.pass.value;
       let confPass = e.target.confPass.value;
       let nom = e.target.nom.value;
@@ -57,9 +58,15 @@ export default function FichePerso({nom,prenom,mail,adrs,dpt,ville,birthdate,rol
                     <input className='form-input' type='text' placeholder={nom}></input>
                 </div>
             </div>
-            <div className='form-champ'>
-                <label className='form-label'>Adresse mail :</label>
-                <input className='form-input' type='text' placeholder={mail}></input>
+            <div className='form-champ-double'>
+                <div className='form-sschamp-double'>
+                    <label className='form-label'>Adresse mail :</label>
+                    <input className='form-input' type='text' placeholder={mail}></input>
+                </div>
+                <div className='form-sschamp-double'>
+                    <label className='form-label'>Téléphone :</label>
+                    <input className='form-input' type='text' placeholder={tel}></input>
+                </div>
             </div>
             <div className='form-champ'>
                 <label className='form-label'>Mot de passe :</label>
