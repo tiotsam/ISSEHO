@@ -66,7 +66,9 @@ export default function Cours() {
                 <HeaderCours/>
                 <Modulec1/>
                 { !isLoadedChoix && <p className='chargement'> Loading......</p> }
-                { isLoadedChoix && <Modulec2 matieres={matieres} niveaux={niveaux} cours={cours} setCoursFiltre={setCoursFiltre} coursFiltre={coursFiltre}/>}
+                { isLoadedChoix && <Modulec2 matieres={matieres} niveaux={niveaux}
+                                             cours={cours}
+                                             setCoursFiltre={setCoursFiltre} coursFiltre={coursFiltre}/>}
 
                 { !isLoaded && <p className='chargement'>Loading.....</p>}
 

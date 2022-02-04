@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react"
 import '../../Style/Cours/Modulec2.css'
+import Select from "react-select";
 
 function Modulec2({matieres, niveaux, cours, setCoursFiltre ,coursFiltre}) {
     console.log(matieres);
@@ -9,6 +10,12 @@ function Modulec2({matieres, niveaux, cours, setCoursFiltre ,coursFiltre}) {
     },[]);
 
     console.log(coursFiltre);
+
+    let profOpt = [];
+
+    cours.map((cour) => (
+       profOpt.push({label: cour.Auteur.infos.nom + " " + cour.Auteur.infos.prenom, value: cour.Auteur.email})
+    ));
 
     let filtrerMatieres = [];
     let filtrerNiveaux = [];
@@ -99,14 +106,8 @@ function Modulec2({matieres, niveaux, cours, setCoursFiltre ,coursFiltre}) {
                 
                 <div className="label_input">
                 <label className="label_m">Professeur</label>
-                <select className="select_m">
-                    <option value="">Choisir un Professeur </option>
-                    <option value="dog">Gérard</option>
-                    <option value="cat">Delphine</option>
-                    <option value="hamster">Isabelle</option>
-                    <option value="parrot">Mamoude</option>
-                    <option value="spider">Yoric</option>
-                </select>
+                <Select className="select_m" options={profOpt}>
+                </Select>
                 </div>
             </div>
 
