@@ -7,6 +7,7 @@ import '../Style/App.css';
 import '../Style/Home.css'
 import lottie from 'lottie-web'
 import Loader from '../Componente/Loader';
+import Calendar from '../Componente/Calendar';
 
 
 
@@ -91,6 +92,7 @@ function Home() {
         <div className='wrapper_load'>
           <Loader/>
         </div></div>}
+      <Calendar/>
       <Elmhome />
     </>
   )
