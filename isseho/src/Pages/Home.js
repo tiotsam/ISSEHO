@@ -8,7 +8,7 @@ import '../Style/Home.css'
 import lottie from 'lottie-web'
 import Loader from '../Componente/Loader';
 import CarteRecherche from "../Componente/CarteRecherche";
-import Calendar from '../Componente/Calendar';
+import Cartedata from "../Componente/Cartedata"
 
 
 
@@ -96,7 +96,6 @@ function Home() {
         <div className='wrapper_load'>
           <Loader/>
         </div></div>}
-      <Calendar/>
       <Elmhome />
     </>
   )

@@ -23,7 +23,7 @@ function Carte({cours}) {
   //                             src={cour.matieres.image}/>)
   // });
 
-for (let i = 0; i < 4; i++) {
+for (let i = 0; i < 3; i++) {
   showCours.push(<Cartedata img={cours[i].Auteur.infos.imageUser} matiere={cours[i].matieres.nom}
     nomAuteur={cours[i].Auteur.infos.nom + " " + cours[i].Auteur.infos.prenom}
     information={formatDateHeure(cours[i].dateDebut, cours[i].dateFin)}
@@ -34,17 +34,15 @@ for (let i = 0; i < 4; i++) {
 console.log(showCours);
     return (
       <div className='cards' >
-        
         <h1 className='titre_text'>Soutiens Scolaire</h1>
         <h5 className='soustitre_text'>PLATEFORME SOLIDAIRE DE PARTAGE DES COMPÉTENCES</h5>
         <div className='cards__container'>
-          <div className='cards__wrapper'>
-            <ul className='cards__items'>
+            <div className='cards__items'>
               {showCours}
-            </ul>
+            </div>
           </div>
         </div>
-      </div>
+     
     );
   }
   
