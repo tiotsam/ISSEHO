@@ -55,7 +55,7 @@ class CoursController extends AbstractController
 
 
     #[Route('/cours/countCours', name: 'cours.count')]
-    public function getEnfantNumber(): Response
+    public function getCountCours(): Response
     {
         $cours = new Cours;
         $cours = $this->coursRepository->countCours();

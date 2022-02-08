@@ -121,8 +121,7 @@ class SecurityServices {
 
 
         if( filter_var($email, FILTER_VALIDATE_EMAIL ))
-        {
-            
+        {  
             if($this->userRep->findOneBy(['email' => $email]))
             {
                 throw new Exception("L'adresse mail : ".$email.' existe déjà'); 
@@ -148,7 +147,6 @@ class SecurityServices {
                         $user->setRoles(['ROLE_ADMIN']);
                         break;
                 }
-
                 $info->setPrenom($prenom)
                 ->setNom($nom)
                 ->setTel($tel)
@@ -159,7 +157,6 @@ class SecurityServices {
                 ->setDateInscription($dateInscription)
                 ->setUser($user)
                 ->setImageUser($img);
-
                 if(!empty($parent)){
                     $p = new User;
                     $p = $this->userRep->findOneBy(['email' => $parent]);

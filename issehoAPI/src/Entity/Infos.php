@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\User;
+use App\Entity\Cours;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\InfosRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -13,7 +14,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=InfosRepository::class)
  */
-// #[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read_cours','read_msgs']],
+)]
 class Infos
 {
     /**
@@ -26,13 +29,13 @@ class Infos
     /**
      * @ORM\Column(type="string", length=255)
      */
-    #[Groups(['read_user','read_cours','read_cour'])]
+    #[Groups(['profs','read_user','read_cours','read_cour','read_msgs'])]
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    #[Groups(['read_user','read_cours','read_cour'])]
+    #[Groups(['profs','read_user','read_cours','read_cour','read_msgs'])]
     private $prenom;
 
     /**
@@ -62,20 +65,20 @@ class Infos
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    #[Groups(['read_user','read_cours','read_cour'])]
+    #[Groups(['profs','read_user','read_cours','read_cour','read_msgs'])]
     private $imageUser;
 
     /**
      * @ORM\OneToOne(targetEntity=user::class, mappedBy="infos")
      * @ORM\JoinColumn(nullable=false)
      */
-    #[Groups(['read_cour'])]
+    // #[Groups(['read_cour'])]
     private $user;
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="enfants")
      */
-    #[Groups(['read_cour'])]
+    // #[Groups(['read_cour'])]
     private $enfants;
 
     /**

@@ -43,7 +43,7 @@ function Home() {
         },
       }
 
-      const respcours = await fetch(process.env.REACT_APP_URL_CUSTO + 'cours/home', optionGet);
+      const respcours = await fetch(process.env.REACT_APP_URL + '/cours/home', optionGet);
       const respnbcours = await fetch(process.env.REACT_APP_URL_CUSTO + 'cours/countCours', optionGet);
       const respnbprof = await fetch(process.env.REACT_APP_URL_CUSTO + 'users/countProf', optionGet);
       const respnbenfant = await fetch(process.env.REACT_APP_URL_CUSTO + 'users/countEnfant', optionGet);
@@ -63,9 +63,9 @@ function Home() {
       if (respcours.status === 200) {
         setcours(await respcours.json());
 
-        cours.cours.forEach(cour => {
-          console.log(cour);
-        });
+        // cours.cours.forEach(cour => {
+        //   console.log(cour);
+        // });
         setisLoadedCarte(true);
       }
       
@@ -88,7 +88,7 @@ function Home() {
       
       <>
       <HeaderSection />
-      {isLoaded && <Infobarre nbcours={nbcours.cours[0][1]} nbprof={nbprof.user[0][1]} nbenfant={nbenfant.user[0][1]} />}
+      {isLoaded && <Infobarre nbcours={nbcours.cours[0][1]+' Cours'} nbprof={nbprof.user[0][1]+' Professeurs'} nbenfant={nbenfant.user[0][1]+' Enfants'} />}
       {!isLoaded && <Infobarre nbcours="0" nbprof="0" nbenfant="0" />}
       {isLoadedCarte && <Carte cours={cours.cours} />}
       {!isLoadedCarte && <div className='container_load'>

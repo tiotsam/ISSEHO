@@ -13,7 +13,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=MatieresRepository::class)
  */
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read_cours']],
+)]
 class Matieres
 {
     /**

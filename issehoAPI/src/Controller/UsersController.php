@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,6 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UsersController extends AbstractController
 {
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     #[Route('/users', name: 'users')]
     public function index(): Response
     {
@@ -18,8 +24,8 @@ class UsersController extends AbstractController
         ]);
     }
 
-    #[Route('/users/children/{idParent}', name: 'users.list.Auteur')]
-    public function coursByAuthor(ManagerRegistry $doctrine, $idParent): Response
+    #[Route('/users/children/{idParent}', name: 'users.list.Children')]
+    public function getChildren(ManagerRegistry $doctrine, $idParent): Response
     {
         $repository = $doctrine->getRepository(User::class);
         $users = $repository->findChildren($idParent);
@@ -27,10 +33,13 @@ class UsersController extends AbstractController
     }
 
     #[Route('/users/prof', name: 'users.list.prof')]
-    public function getProf(ManagerRegistry $doctrine): Response
+    public function getProf(): Response
     {
-        $repository = $doctrine->getRepository(User::class);
-        $users = $repository->findByRoleProf();
+        // $repository = $doctrine->getRepository(User::class);
+        // $users = $repository->findByRoleProf();
+        $users = new User;
+        $users = $this->userRepository->findByRoleProf();
+
         return $this->json(['user'=> $users]);
     }
 

@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+
 // @ORM\Entity(repositoryClass=CoursRepository::class)
 
 /**
@@ -18,25 +19,27 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 #[ApiResource(
     normalizationContext: ['groups' => ['read_cours']],
-    itemOperations: [
-       'PUT','DELETE','PATCH',
-       'get'=> [
-           'normalization_context' => ['groups' => ['read_cour']],
-       ],
-       'getLastFour' => [
+    collectionOperations:[
+        'GET',
+        'getLastFour' => [
         'method' => 'GET',
         'path' => '/cours/home',
-        'controller' => Get4LastCoursController::class,
+        'controller' => '\App\Controller\CoursController::getLastFour',
         'pagination_enabled'=> false,
         'filters'=>[],
         'openapi_context'=>[
             'summary' => 'Récupère les quatre derniers cours.',
             'parameters' => [],
         ],
-        ],
-
-   ],
-   )]
+    ],
+],
+itemOperations: [
+    'PUT','DELETE','PATCH',
+    'get'=> [
+        'normalization_context' => ['groups' => ['read_cour']],
+    ],
+],
+)]
 class Cours
 {
     /**
@@ -94,6 +97,7 @@ class Cours
     /**
      * @ORM\Column(type="integer")
      */
+    #[Groups(['read_cours','read_cour'])]
     private $maxParticipants;
 
     public function __construct()

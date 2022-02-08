@@ -13,7 +13,29 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=MessageRepository::class)
  */
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read_msgs']],
+    // collectionOperations:[
+    //     'GET','POST',
+    // ],
+    // itemOperations: [
+    //    'PUT','DELETE','PATCH',
+    //    'get'=> [
+    //        'normalization_context' => ['groups' => ['read_user']],
+    //    ],
+    //    'getMsg' => [
+    //     'method' => 'GET',
+    //     'path' => '/messages/user/{userId}',
+    //     'controller' => '\App\Controller\MessagesController::messagesByUser(userId)',
+    //     'pagination_enabled'=> false,
+    //     'filters'=>[],
+    //     'openapi_context'=>[
+    //         'summary' => "Récupère les messages de l'utilisateur connecté.",
+    //         'parameters' => [],
+    //         ]
+    //     ],
+//    ],
+)]
 class Message
 {
     /**
@@ -21,36 +43,38 @@ class Message
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    #[Groups(['read_user'])]
+    #[Groups(['read_user','read_msgs'])]
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    #[Groups(['read_user'])]
+    #[Groups(['read_user','read_msgs'])]
     private $objet;
 
     /**
      * @ORM\Column(type="text")
      */
-    #[Groups(['read_user'])]
+    #[Groups(['read_user','read_msgs'])]
     private $contenu;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    #[Groups(['read_user'])]
+    #[Groups(['read_user','read_msgs'])]
     private $dateEnvoi;
 
     /**
      * @ORM\ManyToMany(targetEntity=user::class, inversedBy="messages")
      */
+    #[Groups(['read_msgs'])]
     private $destinataire;
 
     /**
      * @ORM\ManyToOne(targetEntity=user::class)
      * @ORM\JoinColumn(nullable=false)
      */
+    #[Groups(['read_msgs'])]
     private $Auteur;
 
     public function __construct()

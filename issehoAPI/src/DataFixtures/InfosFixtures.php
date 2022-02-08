@@ -21,7 +21,6 @@ class InfosFixtures extends Fixture implements DependentFixtureInterface
         $this->infoRepository = $infosRepository;
     }
 
-
     public function load(ObjectManager $manager): void
     {
         // $product = new Product();

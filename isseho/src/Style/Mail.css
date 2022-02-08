@@ -1,5 +1,111 @@
 .mail{
     height: 100%;
     width: 100%;
-    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    /* background-color: #202020; */
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.menuMail{
+    width: 15%;
+    height: 100%;
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    /* background-color: #202020; */
+    border-bottom-left-radius: 1rem;
+    border-right: solid 1px black;
+    gap: 1px;
+}
+
+.mailAffiche{
+    width: 100%;
+    height: 100%;
+}
+
+.topBarMail{
+    height: 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* border: solid 1px black; */
+}
+
+.btnMessagerie{
+    height: 1.5rem;
+    width: 100%;
+    background-color: white;
+    border: none;
+}
+
+.btnMessagerieActive{
+    height: 1.5rem;
+    width: 100%;
+    background-color: #0F5360;
+    color: white;
+    border: none;
+}
+
+.topMail{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border: solid 1px black;
+    justify-content: space-evenly;
+    background-color: white;
+}
+
+.topBarElement{
+    height: 1.5rem;
+    width: 33.33%;
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+    background-color: white;
+}
+
+.redacMail{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-mail{
+    height: 100%;
+    width: 100%;
+}
+
+.headerRedacMail{
+    height: 20%;
+    width: 100%;
+    display: flex;
+}
+
+.champ-mail{
+    height: 100%;
+    width: 100%;
+}
+.colGauche{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.colDroite{
+    width: 100%;
+    height: 100%;
+}
+
+.envoi-mail{
+    height: 100%;
+}
+.contenuMail{
+    display: flex;
+    width: 100%;
+    height: 80%;
+    border-bottom-right-radius: 1rem;
+    resize: none;
 }

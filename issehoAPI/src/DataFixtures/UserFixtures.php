@@ -47,9 +47,7 @@ class UserFixtures extends Fixture
         $enfant->setPassword($this->userPasswordHasher->hashPassword($enfant,plainPassword:'enfant123'.$i));
         $manager->persist($enfant);
 
-        }
-
-        
+        } 
 
         $manager->flush();
     }

@@ -55,4 +55,4 @@ security:
         - { path: ^/api/users/countParent, roles: PUBLIC_ACCESS }
         - { path: ^/api/users/countEnfant, roles: PUBLIC_ACCESS }
         - { path: ^/api, roles: PUBLIC_ACCESS}
-        # - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+        # - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }

@@ -156,7 +156,8 @@ export default function Inscription({setisAuthenticated}) {
                 else{
                     console.log("le log n'a pas fonctionné");
                     const returnLog = await resplog.json();
-                    seterror(returnLog);
+                    // seterror(returnLog);
+                    seterror("l'utilisateur n'existe pas");
                 }
             }
             else {
@@ -195,11 +196,11 @@ export default function Inscription({setisAuthenticated}) {
                         <div className='form-champ-double'>
                             <div className='form-sschamp-double'>
                                 <label className='form-label'>Adresse mail :</label>
-                                <input className='form-input' type='text' name='mail' id='mail' required placeholder='Veuillez renseigner votre adresse mail' />
+                                <input className='form-input' type='text' name='mail' id='mail' required placeholder='Adresse mail' />
                             </div>
                             <div className='form-sschamp-double'>
                                 <label className='form-label'>Tel :</label>
-                                <input className='form-input' type='text' name='tel' id='tel' required placeholder='Veuillez renseigner votre numéro de téléphone' />
+                                <input className='form-input' type='text' name='tel' id='tel' required placeholder='Numéro de téléphone' />
                             </div>
                         </div>
 
@@ -215,7 +216,7 @@ export default function Inscription({setisAuthenticated}) {
 
                         <div className='form-champ'>
                             <label className='form-label'>Adresse :</label>
-                            <input className='form-input' type='text' name='rue' id='rue' required placeholder='Veuillez renseigner votre rue' />
+                            <input className='form-input' type='text' name='rue' id='rue' required placeholder='Veuillez renseigner votre adresse' />
                         </div>
 
                         <div className='form-champ-double'>

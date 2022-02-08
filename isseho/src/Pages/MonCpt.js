@@ -30,12 +30,15 @@ export default function MonCpt() {
 
   useEffect(() => {
 
-    const getUser = async () => {
+    const getInfos = async () => {
+
+      console.log(JSON.parse(localStorage.getItem('user')));
 
       // On récupère l'id du user connecté
       let userId = JSON.parse(localStorage.getItem('user')).id;
 
       const respUser = await fetch(process.env.REACT_APP_URL + '/users/' + userId, opt);
+      const respMail = await fetch(process.env.REACT_APP_URL_CUSTO + 'messages/user/' + userId, opt);
 
 
       if (respUser.status === 200) {
@@ -51,84 +54,44 @@ export default function MonCpt() {
         setisLoaded(true);
       }
 
-    }
-
-    const getMsg = async()=>{
-
-      console.log(user);
-      // console.log(process.env.REACT_APP_URL_CUSTO + 'messages/user/' + user.id);
-      // const respMail = await fetch(process.env.REACT_APP_URL_CUSTO + 'messages/user/' + user.id + userId, opt);
-      // if (respMail === 200) {
-      //   setMessages(await respMail.json().messages);
-      //   console.log('coucou');
-      //   console.log(messages);
-      //   setisLoadedMsg(true);
-    }
-
-    return getUser();
-  }, []);
-
-
-
-  
-
-  const afficheMessages = (messages) => {
-    console.log('coucou');
-    console.log(messages);
-
-    let afficheMsg = []
-
-    if (messages.length === 0) {
-      afficheMsg.push(
-        <div>Vous n'avez pas de messages</div>
-      )
-    } else {
-      if (messages.length === 1) {
-        afficheMsg.push(
-          <Mail objet={user.messages[0].objet} contenu={user.messages[0].contenu} dateEnvoi={user.messages[0].dateEnvoi} />
-        )
-      } else {
-        messages.forEach(message => {
-          afficheMsg.push(
-            <Mail objet={message.objet} contenu={message.contenu} dateEnvoi={message.dateEnvoi} />
-          )
-        });
+      
+      if (respMail.status === 200) {
+        setMessages(await respMail.json());
+        setisLoadedMsg(true);
       }
-    }
 
-    return afficheMsg;
   }
 
-  isLoaded ? console.log(user) : console.log('Chargement...');
-  isLoadedMsg ? console.log(messages) : console.log('Chargement messages ...');
+    return getInfos();
+}, []);
 
-    return (
-      <div className='pageMonCpt'>
-        <div className='topBar' />
-        <div className='containerCptBoard'>
-          <GridLayout
-            className="layout"
-            layout={layout}
-            cols={12}
-            rowHeight={30}
-            width={1920}
-          >
-            <div key="1" className='ficheUser'>
-              {isLoaded && <FichePerso nom={user.infos.nom} prenom={user.infos.prenom} mail={user.email} tel={user.infos.tel} adrs={user.infos.rue} dpt={user.infos.departement} ville={user.infos.ville} birthdate={user.infos.birthDate} role={user.roles[1]} />}
-              {!isLoaded && <p className='chargement'>Loading.....</p>}
-            </div>
-
-            <div className='carte' key="2">Calendrier</div>
-            <div key="3" className='messagerie'>
-              <img className='topImg' src={require("../assets/mail.jpg")} />
-              {isLoadedMsg && afficheMessages(messages)}
-              {!isLoadedMsg && <p>Loading...</p>}
-            </div>
-            <div className='carte' key="4">Enfants</div>
-          </GridLayout>
-
+return (
+  <div className='pageMonCpt'>
+    <div className='topBar' />
+    <div className='containerCptBoard'>
+      <GridLayout
+        className="layout"
+        layout={layout}
+        cols={12}
+        rowHeight={30}
+        width={1920}
+      >
+        <div key="1" className='ficheUser'>
+          {isLoaded && <FichePerso nom={user.infos.nom} prenom={user.infos.prenom} mail={user.email} tel={user.infos.tel} adrs={user.infos.rue} dpt={user.infos.departement} ville={user.infos.ville} birthdate={user.infos.birthDate} role={user.roles[1]} />}
+          {!isLoaded && <p className='chargement'>Loading.....</p>}
         </div>
-      </div>
-    )
+
+        <div className='carte' key="2">Calendrier</div>
+        <div key="3" className='messagerie'>
+          <img className='topImg' alt='image messagerie' src={require("../assets/mail.jpg")} />
+          {isLoadedMsg && <Mail messages={messages['messages']}/>}
+          {!isLoadedMsg && <p>Loading...</p>}
+        </div>
+        <div className='carte' key="4">Enfants</div>
+      </GridLayout>
+
+    </div>
+  </div>
+)
   
 }

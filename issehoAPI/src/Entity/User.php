@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Cours;
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\UsersController;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -16,7 +17,23 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 #[ApiResource(
-    normalizationContext: ['groups' => ['read_users']],
+    normalizationContext: ['groups' => ['read_users','read_cours','read_msgs']],
+    collectionOperations:[
+        'GET',
+        // 'GET'=>['normalization_context' => ['groups' => ['read_users']]],
+        // 'normalization_context' => ['groups' => ['profs']],
+        'getProfs' => [
+            'method' => 'GET',
+            'path' => '/users/prof',
+            'controller' => '\App\Controller\UsersController::getProf',
+            'pagination_enabled'=> false,
+            'filters'=>[],
+            'openapi_context'=>[
+                'summary' => 'Récupère les profs.',
+                'parameters' => [],
+                ]
+        ],
+    ],
     itemOperations: [
        'PUT','DELETE','PATCH',
        'get'=> [
@@ -55,7 +72,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\OneToOne(targetEntity=Infos::class, inversedBy="user", cascade={"persist", "remove"})
      */
-    #[Groups(['read_user','read_cours','read_cour'])]
+    #[Groups(['read_user','read_cours','read_cour','read_msgs'])]
     private $infos;
 
     /**

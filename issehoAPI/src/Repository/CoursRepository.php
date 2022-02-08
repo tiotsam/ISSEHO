@@ -56,7 +56,7 @@ class CoursRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return User[] Returns an array of User objects
+    //  * @return Cours[] Returns an array of User objects
     //  */
     public function countCours()
     {
