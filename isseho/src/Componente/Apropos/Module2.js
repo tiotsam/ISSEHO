@@ -13,12 +13,12 @@ function Module2() {
 
       <div className='bulle_block'>
         <dvi className='bulle_ligne'>
-          <img className='icon_fix' src={require('../../assets/prof1.jpg')}></img>
-          <img className='icon_fix' src={require('../../assets/prof1.jpg')}></img>
+          <img className='icon_fix' src={require('../../assets/chimi.jpg')}></img>
+          <img className='icon_fix' src={require('../../assets/math.jpg')}></img>
         </dvi>
         <dvi className='bulle_ligne'>
-          <img className='icon_fix' src={require('../../assets/prof1.jpg')}></img>
-          <img className='icon_fix' src={require('../../assets/prof1.jpg')}></img>
+          <img className='icon_fix' src={require('../../assets/histoire.png')}></img>
+          <img className='icon_fix' src={require('../../assets/images.jpeg')}></img>
         </dvi>
       </div>
       <div className='container_text_m'></div>

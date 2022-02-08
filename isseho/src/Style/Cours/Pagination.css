@@ -1,0 +1,23 @@
+
+
+.page_page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: p;
+}
+
+.page_page ul{
+    list-style-type: none;
+}
+
+.page_page li{
+
+    margin: 1rem;
+    display: inline;
+    flex-direction: row;
+    cursor: pointer;
+    
+
+    
+}

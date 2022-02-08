@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import ReactPaginate from "react-paginate";
 
 
+
 function RecherchePagination(){
 
     const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
@@ -45,9 +46,12 @@ function RecherchePagination(){
         };
 
         return (
-            <>
+            <>  
+                
                 <Items currentItems={currentItems} />
-                <ReactPaginate
+                <ReactPaginate 
+                    id='container'
+                    className='page_page'
                     breakLabel="..."
                     nextLabel="next >"
                     onPageChange={handlePageClick}
@@ -58,7 +62,10 @@ function RecherchePagination(){
                 />
             </>
         );
+        
     }
-
+    ReactDOM.render(
+        <PaginatedItems itemsPerPage={4} />,
+        document.getElementById('container'));
 
 }

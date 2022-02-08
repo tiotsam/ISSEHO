@@ -9,3 +9,9 @@
 .containerload{
     width: 50%;
 }
+
+.text_loading{
+    margin-top: 1rem auto;
+    display: flex;
+}
+
