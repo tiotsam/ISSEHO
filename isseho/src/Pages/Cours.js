@@ -56,26 +56,27 @@ export default function Cours() {
                 console.log(matieres);
                 setisLoadedChoix(true);
             }
+
+            // const respCours = await fetch(process.env.REACT_APP_URL + '/cours', coursGet);
+            // const respMatieres = await fetch(process.env.REACT_APP_URL + '/matieres', coursGet);
+            // const respNiveaux = await fetch(process.env.REACT_APP_URL + '/niveaux', coursGet);
+    
+            // if (respCours.status === 200) {
+            //     console.log("YOYO");
+            //     setCours(await respCours.json());
+            //     setisLoaded(true);
+            // }
+    
+    
+    
+            // if (respMatieres.status === 200 && respNiveaux.status === 200) {
+            //     console.log("OYOY");
+            //     setMatieres(await respMatieres.json());
+            //     setNiveaux(await respNiveaux.json());
+            //     setisLoadedChoix(true);
+            // }
         }
 
-        const respCours = await fetch(process.env.REACT_APP_URL + '/cours', coursGet);
-        const respMatieres = await fetch(process.env.REACT_APP_URL + '/matieres', coursGet);
-        const respNiveaux = await fetch(process.env.REACT_APP_URL + '/niveaux', coursGet);
-
-        if (respCours.status === 200) {
-            console.log("YOYO");
-            setCours(await respCours.json());
-            setisLoaded(true);
-        }
-
-
-
-        if (respMatieres.status === 200 && respNiveaux.status === 200) {
-            console.log("OYOY");
-            setMatieres(await respMatieres.json());
-            setNiveaux(await respNiveaux.json());
-            setisLoadedChoix(true);
-        }
     
     return getCours();
     }, []);
