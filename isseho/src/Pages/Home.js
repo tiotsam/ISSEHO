@@ -7,6 +7,7 @@ import '../Style/App.css';
 import '../Style/Home.css'
 import lottie from 'lottie-web'
 import Loader from '../Componente/Loader';
+import CarteRecherche from "../Componente/CarteRecherche";
 
 
 
@@ -19,7 +20,6 @@ function Home() {
   const [isLoaded, setisLoaded] = useState(false);
   const [isLoadedCarte, setisLoadedCarte] = useState(false);
   const containerload = useRef(null)
-
 
   useEffect(() => {
 

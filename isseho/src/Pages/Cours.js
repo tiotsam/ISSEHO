@@ -12,6 +12,7 @@ import ReactPaginate from "react-paginate";
 export default function Cours() {
 
     const [cours, setCours] = useState("");
+    const [coursFiltre, setCoursFiltre] = useState("");
     const [matieres, setMatieres] = useState("");
     const [isLoaded, setisLoaded] = useState(false);
     const [isLoadedChoix, setisLoadedChoix] = useState(false);
@@ -47,11 +48,12 @@ export default function Cours() {
             setisLoaded(true);
         }
 
+
+
         if (respMatieres.status === 200 && respNiveaux.status === 200) {
             console.log("OYOY");
             setMatieres(await respMatieres.json());
             setNiveaux(await respNiveaux.json());
-            console.log(matieres);
             setisLoadedChoix(true);
         }
     }
@@ -64,11 +66,13 @@ export default function Cours() {
                 <HeaderCours/>
                 <Modulec1/>
                 { !isLoadedChoix && <p className='chargement'> Loading......</p> }
-                { isLoadedChoix && <Modulec2 matieres={matieres} niveaux={niveaux}/>}
+                { isLoadedChoix && <Modulec2 matieres={matieres} niveaux={niveaux}
+                                             cours={cours}
+                                             setCoursFiltre={setCoursFiltre} coursFiltre={coursFiltre}/>}
 
                 { !isLoaded && <p className='chargement'>Loading.....</p>}
 
-                { isLoaded && <CarteRecherche cours={cours}/>
+                { isLoaded && <CarteRecherche cours={coursFiltre}/>
 
 
                 }
