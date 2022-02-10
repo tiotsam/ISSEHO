@@ -2,12 +2,17 @@ import React, { useState } from 'react'
 import '../Style/Inscription.css'
 import jwtDecode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
+import Popup from 'reactjs-popup';
+import CGU from '../Componente/CGU';
 
 export default function Inscription({setisAuthenticated}) {
 
     const [error, seterror] = useState('');
+    // const [hasError, sethasError] = useState(false);
     var validator = require("email-validator");
     let navigate = useNavigate();
+    let hasError = false;
+
 
     function CalculAge(birthdate) {  
     
@@ -25,13 +30,14 @@ export default function Inscription({setisAuthenticated}) {
     }
 
     const register = async (e) => {
+        console.log('register se lance...');
 
         e.preventDefault();
-        seterror('');
+        hasError = false;
 
         // On récupère les données du formulaire
         
-        let roleUser = e.target.typeUser.value == 'Professeur' ? 'prof' : 'parent';
+        let roleUser = e.target.typeUser.value === 'Professeur' ? 'prof' : 'parent';
         let mail = e.target.mail.value;
         let pass = e.target.pass.value;
         let tel = e.target.tel.value;
@@ -43,48 +49,60 @@ export default function Inscription({setisAuthenticated}) {
         let ville = e.target.ville.value;
         let birthdate = e.target.birthdate.value;
         let today = new Date().toLocaleString();
+        let img = e.target.img.value;
 
         // On vérifie les données avant de les envoyer au back
+
+        if(e.target.CGU.checked === false){
+            seterror("Merci d'accepter les conditions générales d'utilisation");
+            hasError = true;
+        }
         // On teste le mail
-        if (validator.validate(mail) === false) {
+        if (validator.validate(mail) === false && !hasError) {
             seterror('Veuillez entrer un e-mail valide.');
+            hasError = true;
         }
         
         // On vérifie les mots de passe
-        if (pass !== confPass) {
+        if (pass !== confPass && !hasError) {
             seterror('Le mot de passe et la confirmation de mot de passe ne correspondent pas.');
+            hasError = true;
         } else if (pass.length < 6) {
             seterror('Le mot de passe doit contenir au moins 6 caractères');
+            hasError = true;
         }
         
         // On vérifie les départements
-        if (departement.length === 2 || departement.length === 3) {
+        if ( departement.length === 2 || departement.length === 3) {
             if (isNaN(departement)) {
                 if (departement !== '2A' && departement !== '2a' && departement !== '2B' && departement !== '2b') {
                     seterror('Le département doit être un nombre');
+                    hasError = true;
                 }
-            } else if (departement < 0 || departement > 95 || departement == 20) {
-                if (departement < 971 || departement > 974 && departement != 976) {
+            } else if (departement < 0 || departement > 95 || departement === 20) {
+                if (departement < 971 || (departement > 974 && departement !== 976)) {
                     
                     seterror('Merci de renseigner un numéro de département valide');
-                    
+                    hasError = true;
                 }
             }
         } else {
             seterror('Un département doit être entre 2 et 3 caractères.');
+            hasError = true;
         }
         
         // On teste l'age de l'utilisateur
-        if( CalculAge(birthdate) < 18){
+        if( CalculAge(birthdate) < 18 && !hasError){
             console.log('age : ' + CalculAge(birthdate) );
             seterror('Vous devez être adulte pour vous inscrire sur ce site.');
-            console.log("J'ai vu que l'age est trop petit");
-            console.log(error);
+            hasError = true;
         }
         
+        console.log(hasError);
         // Si tout est Bon, on l'envoie dans le back
-        if (error === '') {
-
+        if (!hasError) {
+            console.log(hasError);
+            console.log(img);
             console.log('Données valides');
             let options = {
                 method: 'POST',
@@ -100,6 +118,8 @@ export default function Inscription({setisAuthenticated}) {
                     ville: ville,
                     birthdate: birthdate,
                     dateInscription: today,
+                    img: img,
+                    parent: null,
                 }),
                 headers: {
                     'Accept': 'application/json',
@@ -154,14 +174,15 @@ export default function Inscription({setisAuthenticated}) {
                     navigate('/MonCpt');
                 }
                 else{
-                    console.log("le log n'a pas fonctionné");
                     const returnLog = await resplog.json();
-                    // seterror(returnLog);
-                    seterror("l'utilisateur n'existe pas");
+                    console.log(returnLog);
+                    seterror(returnLog);
+                    // seterror("l'utilisateur n'existe pas");
                 }
             }
             else {
                 const registerRet = await resp.json();
+                console.log(registerRet);
                 seterror(registerRet);
             }
         }
@@ -179,6 +200,10 @@ export default function Inscription({setisAuthenticated}) {
                         <h2>Formulaire d'inscription</h2>
                         <span className='errorMsg'>{error}</span>
 
+                        <div className="form-champ">
+                            <label htmlFor="" className="form-label">Image de profile :</label>
+                            <input  type="file" name="img" id="img" />
+                        </div>
                         <div className='form-champ-double'>
 
                             <div className='form-sschamp-double'>
@@ -192,11 +217,10 @@ export default function Inscription({setisAuthenticated}) {
                             </div>
 
                         </div>
-
                         <div className='form-champ-double'>
                             <div className='form-sschamp-double'>
-                                <label className='form-label'>Adresse mail :</label>
-                                <input className='form-input' type='text' name='mail' id='mail' required placeholder='Adresse mail' />
+                                <label className='form-label'>Adresse mail :</label>                                
+                                <input className='form-input' type='email' name='mail' id='mail' required placeholder='Adresse mail' />
                             </div>
                             <div className='form-sschamp-double'>
                                 <label className='form-label'>Tel :</label>
@@ -244,7 +268,17 @@ export default function Inscription({setisAuthenticated}) {
                                 </select>
                             </div>
                         </div>
+                        <div className="form-CGU">
+                        <Popup trigger={<a className='CGU-Link'>Conditions générales d'utilisation</a>} position="top center">
+                            <CGU/>
+                        </Popup>
+                        <div className='form-champCGU'>
+                        <label className="form-label">Lu et approuvé : </label>
+                        <input className='form-checkbox' type="checkbox" name="CGU" id="CGU" />
 
+                        </div>
+
+                        </div>
                         <input className='form-submit' type='submit' value="S'inscrire" />
                     </form>
                 </div>

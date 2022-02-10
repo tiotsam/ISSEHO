@@ -40,6 +40,7 @@ class SecurityController extends AbstractController
     {
         try{
             $post = json_decode($request->getContent(),true);
+            $this->service->register($post['email'],$post['prenom'],$post['nom'],$post['password'],$post['role'],$post['tel'],$post['rue'],$post['departement'],$post['ville'],$post['birthdate'],$post['dateInscription'],$post['img'],$post['parent']);
         }
         catch(Exception $e){
             return $this->json($e->getMessage(),500);

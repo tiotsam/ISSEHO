@@ -96,7 +96,7 @@ function Home() {
         <div className='wrapper_load'>
           <Loader/>
         </div></div>}
-      <Calendar/>
+      {/* <Calendar/> */}
       <Elmhome />
     </>
   )

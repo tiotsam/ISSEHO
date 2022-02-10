@@ -100,6 +100,12 @@ class Cours
     #[Groups(['read_cours','read_cour'])]
     private $maxParticipants;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    #[Groups(['read_cours','read_cour'])]
+    private $description;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -233,6 +239,18 @@ class Cours
     public function setMaxParticipants(int $maxParticipants): self
     {
         $this->maxParticipants = $maxParticipants;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

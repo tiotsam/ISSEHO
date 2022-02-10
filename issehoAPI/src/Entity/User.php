@@ -76,12 +76,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $infos;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Questionnaire::class, inversedBy="user")
-     */
-    #[Groups(['read_user'])]
-    private $questionnaire;
-
-    /**
      * @ORM\OneToMany(targetEntity=StatistiquesConnexions::class, mappedBy="user")
      */
     #[Groups(['read_user'])]
@@ -111,6 +105,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(['read_user'])]
     private $enfants;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Reponses::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $reponses;
+
 
 
 
@@ -120,6 +119,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->messages = new ArrayCollection();
         $this->cours = new ArrayCollection();
         $this->mailAutos = new ArrayCollection();
+        $this->reponses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -224,18 +224,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->infos = $infos;
-
-        return $this;
-    }
-
-    public function getQuestionnaire(): ?Questionnaire
-    {
-        return $this->questionnaire;
-    }
-
-    public function setQuestionnaire(?Questionnaire $questionnaire): self
-    {
-        $this->questionnaire = $questionnaire;
 
         return $this;
     }
@@ -365,6 +353,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEnfants(?Infos $enfants): self
     {
         $this->enfants = $enfants;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Reponses[]
+     */
+    public function getReponses(): Collection
+    {
+        return $this->reponses;
+    }
+
+    public function addReponse(Reponses $reponse): self
+    {
+        if (!$this->reponses->contains($reponse)) {
+            $this->reponses[] = $reponse;
+            $reponse->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReponse(Reponses $reponse): self
+    {
+        if ($this->reponses->removeElement($reponse)) {
+            // set the owning side to null (unless already changed)
+            if ($reponse->getUser() === $this) {
+                $reponse->setUser(null);
+            }
+        }
 
         return $this;
     }

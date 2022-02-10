@@ -53,12 +53,21 @@
   
   .cards__wrapper {
     position: relative;
+
   }
   
   .cards__items {
-    margin-bottom: 20px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
   }
   
+  .cards__items > div{
+    flex : 1 1 40%;
+  }
+
   .cards__item {
     display: flex;
     flex: 1;

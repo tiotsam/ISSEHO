@@ -54,6 +54,35 @@
     gap: 4%;
 }
 
+.formCGU{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-champCGU{
+    display: flex;
+    justify-content: center;
+}
+
+.CGU-Link{
+    color: #2499b1;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.CGU-Link:hover{
+    color: #29bbd8;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.form-checkbox{
+    cursor: pointer;
+    height: 1rem;
+    width: 1rem;
+    margin-left: 0.5rem;
+}
+
 .errorMsg{
     color: red;
     font-weight: bold;

@@ -39,9 +39,9 @@ console.log(showCours);
         <h5 className='soustitre_text'>PLATEFORME SOLIDAIRE DE PARTAGE DES COMPÉTENCES</h5>
         <div className='cards__container'>
           <div className='cards__wrapper'>
-            <ul className='cards__items'>
+            <div className='cards__items'>
               {showCours}
-            </ul>
+            </div>
           </div>
         </div>
       </div>

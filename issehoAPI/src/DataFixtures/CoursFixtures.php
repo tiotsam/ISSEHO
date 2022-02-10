@@ -31,7 +31,8 @@ class CoursFixtures extends Fixture implements DependentFixtureInterface
         
         $matières = array('Mathématiques','Français','Echec','Anglais','Informatique','Physique','Chimie');
         $niveaux = array('CP','CE1','CE2','CM1','CM2','6ème','5ème','4ème','3ème','2nde','1ère','terminale','BEP','CAP','BAC PRO');
-        
+        $descriptions = array('Cours de débutant','On va revoir les fondamentaux','Cours avancé','On pousse la réflexion plus loin que la dernière fois','On va surtout faire des exercices afin de vérifier les acquis');
+
         for($i=0 ; $i < 30; $i++){
             $cour = new Cours;
             $mat = new Matieres;
@@ -48,6 +49,7 @@ class CoursFixtures extends Fixture implements DependentFixtureInterface
             ->setDateFin($dateD->add(new DateInterval('PT2H')))
             ->setAuteur($auteur)
             ->setMatieres($mat)
+            ->setDescription($descriptions[random_int(0,sizeof($descriptions)-1)])
             ->setMaxParticipants($maxParticipants)
             ->setNiveau($level);
             for ($j=0; $j < random_int(1,$maxParticipants); $j++) {
