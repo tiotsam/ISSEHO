@@ -83,7 +83,7 @@ return (
 
         <div className='carte' key="2">Calendrier</div>
         <div key="3" className='messagerie'>
-          <img className='topImg' alt='image messagerie' src={require("../assets/mail.jpg")} />
+          <img className='topImg' alt='image messagerie' src={require("../assets/email.jpg")} />
           {isLoadedMsg && <Mail messages={messages['messages']}/>}
           {!isLoadedMsg && <p>Loading...</p>}
         </div>

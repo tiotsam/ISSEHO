@@ -7,8 +7,6 @@ import '../Style/App.css';
 import '../Style/Home.css'
 import lottie from 'lottie-web'
 import Loader from '../Componente/Loader';
-import CarteRecherche from "../Componente/CarteRecherche";
-import Cartedata from "../Componente/Cartedata"
 
 
 

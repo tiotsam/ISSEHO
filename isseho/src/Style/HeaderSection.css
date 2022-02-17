@@ -29,4 +29,15 @@
   
  .text-white{
    color: white;
+   text-justify: center;
  }
+
+ @media screen and (min-width: 900px) {
+  .text-white{
+    text-justify: center;
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+}

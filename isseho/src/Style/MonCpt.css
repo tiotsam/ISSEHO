@@ -2,7 +2,7 @@
 .pageMonCpt{
     height: 100vh;
     width: 100%;
-    background-image: url('../assets/MonCpt_background2.jpg');
+    background-image: url('../assets/bgcpt.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -38,8 +38,8 @@
 
 /* La fiche utilisateur */
 .ficheUser{
-    background-color: rgb(245, 245, 245);
-    border : solid 1px black;
+    background-color: rgb(255, 255, 255);
+    border : none;
     border-radius: 1rem;
     padding: 0.5%;
     box-shadow: black;
@@ -56,7 +56,7 @@
 
 .topImg{
     width: 100%;
-    height: 3rem;
+    height: 5rem;
     object-fit: cover;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
